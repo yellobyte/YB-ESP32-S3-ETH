@@ -6,15 +6,15 @@ The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressi
 
 All variants provide **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, two status LEDs and **two microUSB connectors** for software upload, serial output, debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
 
-![](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/YB-ESP32-S3-ETH_board_top.jpg)
+![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_board_top.jpg)
 
 Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**](https://www.arduino.cc/reference/en/libraries/ethernet/) or [**EthernetESP32**](https://docs.arduino.cc/libraries/ethernetesp32/)), enabling you to easily realise ESP32 projects around this board with **Ethernet or combined Ethernet/WLAN** support.
 
-The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board. 
+The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board. 
 
 If WiFi/BT is needed instead of or additionally to an Ethernet connection then the external 2.4GHz WLAN antenna can be connected to the onboard WROOM-1U module. The connector is compatible with the following standards: U.FL (Hirose), MHF-I (I-PEX) and AMC (Amphen). 
 
-A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/examples). They will help you getting used to the board and exploring all hardware features.
+A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/tree/main/YB-ESP32-S3-ETH/examples). They will help you getting used to the board and exploring all hardware features.
 
 ## YB-ESP32-S3-ETH board features:
  - **ESP32-S3-WROOM-1U-N8R8** module with 8MB Flash, 8MB PSRAM or **ESP32-S3-WROOM-1U-N4** module with 4MB Flash or without ESP32-S3-WROOM module
@@ -33,14 +33,14 @@ A collection of software examples (for PlatformIO and/or ArduinoIDE) are availab
 
 The board will spare you the trouble of cabling two different Arduino boards and saves a lot of room on the breadboard as well:  
 
- ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/YB-ESP32-S3-ETH_modules_replacement.jpg)
+ ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_modules_replacement.jpg)
 
 Just for information purposes: The ESP32-S3-WROOM-1(U) module family comprises several [**versions**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/raw/main/ESP32_specs_and_manuals/ESP32-S3-WROOM-1(U)_Variants.jpg). The **-1** versions come with embedded PCB antenna, the **-1U** versions with IPEX antenna socket instead. The extension -Nx(Ry) defines the amount of available FLASH/PSRAM, e.g. -N4 (4MB Flash, no PSRAM), -N8 (8MB Flash, no PSRAM), -N8R2 (8 MB Flash, 2MB PSRAM), -N8R8 (8 MB Flash, 8MB PSRAM) etc.  
 
 ## Board Pin Layout:
- ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/YB-ESP32-S3-ETH_pinlayout.jpg)
+ ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_pinlayout.jpg)
 
-The boards outline, block diagram and schematic files are all located in folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc), together with data sheets for Espressif's MCU ESP32-S3 and the ESP32-S3-WROOM-1(U) modules.
+The boards outline, block diagram and schematic files are all located in folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc), together with data sheets for Espressif's MCU ESP32-S3 and the ESP32-S3-WROOM-1(U) modules.
 
 ## Powering the board:
 The board uses a LDO to drop the external supply voltage (5VDC min.) and internally operates on 3.3Volt. There are three (mutually exclusive) ways to provide power to the board.
@@ -62,7 +62,7 @@ Settings that apply to the **-N8R8** board (8MB Flash/8MB PSRAM):
 - Partition Scheme: *8MB with spiffs (...)*
 - PSRAM: *OPI PSRAM*  
 
- ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/YB-ESP32-S3-ETH-N8R8_ArduinoIDE-Settings.jpg)  
+ ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH-N8R8_ArduinoIDE-Settings.jpg)  
 
 For the **-N8R2** board (8MB Flash/2MB PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
@@ -81,7 +81,7 @@ Building with **PlatformIO** is easy as well. Starting with Arduino ESP32 Core v
 
 Just create a new project and give it a name, then go to board selection, enter "yb-" and choose your YB-ESP32-S3-*** board from the list thats popping up.
 
- ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/YB-ESP32-S3-ETH_PlatformIO_board_selection.jpg)
+ ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_PlatformIO_board_selection.jpg)
 
 Examples that need to be build with an older framework still come with a folder "boards" which keeps the necessary *.json board definition files. 
 
@@ -130,7 +130,7 @@ In such case **put the ESP32-S3 into upload mode manually** by keeping the **'B'
 23:19:07.453 > rst:0x1 (POWERON),boot:0x0 (DOWNLOAD(USB/UART0))
 23:19:07.459 > waiting for download
 ```
-Below the log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/examples/ArduinoIDE/ESP32-S3-ETH-DHCP).  
+Below the log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP).  
 ```
 Executing task: C:\Users\tj\.platformio\penv\Scripts\platformio.exe run --target upload --target monitor --environment n8r8 --upload-port COM7 --monitor-port COM7 
 
@@ -237,9 +237,9 @@ See https://docs.platformio.org/page/projectconf/build_configurations.html
 ```
 ### Integrating this board into your own PCB design projects:
 
-Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/doc) provides the Eagle library file **_yb-esp32-s3-eth.lbr_** containing the board. Most other PCB design software (e.g. KiCad) are able to import and use Eagle lib files. 
+Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc) provides the Eagle library file **_yb-esp32-s3-eth.lbr_** containing the board. Most other PCB design software (e.g. KiCad) are able to import and use Eagle lib files. 
 
-<p align="center"><img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/Eagle_project_with_yb-esp32-s3-eth.jpg" height="250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/doc/Eagle_project_with_yb-esp32-s3-eth2.jpg" height="250"/></p> 
+<p align="center"><img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth.jpg" height="250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth2.jpg" height="250"/></p> 
 
 
 ## Final Remark for first usage: 
