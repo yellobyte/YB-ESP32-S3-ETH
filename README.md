@@ -3,7 +3,7 @@ The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressi
 - with **ESP32-S3-WROOM-1U-N8R2 module** (8MB Flash/2MB PSRAM),
 - without **ESP32-S3-WROOM-1(U) module** which allows you to solder on any ESP32-S3-WROOM module of your choice.  
 
-The board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, two status LEDs and a **USB-C connector** for software upload, serial output, JTAG debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
+The board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, CH334 USB-Hub chip, CH343 USB-UART bridge chip, two status LEDs and a **USB-C connector** for software upload, serial output, JTAG debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
 
 ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_board_top.jpg)
 
