@@ -212,8 +212,8 @@
 <pad name="0" x="35.56335" y="24.13155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="1" x="60.96335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="2" x="58.42335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
-<pad name="42" x="55.88335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
-<pad name="41" x="53.34335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
+<pad name="42" x="50.80335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
+<pad name="41" x="48.26335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="40" x="25.40335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="39" x="22.86335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="38" x="20.32335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
@@ -233,10 +233,6 @@
 <wire x1="50.9621" y1="21.991546875" x2="50.9621" y2="3.37929375" width="0.127" layer="51"/>
 <wire x1="50.9621" y1="21.991546875" x2="69.85335" y2="21.991546875" width="0.127" layer="51"/>
 <wire x1="69.85335" y1="3.37929375" x2="50.9621" y2="3.37929375" width="0.127" layer="51"/>
-<wire x1="40.972384375" y1="5.05574375" x2="48.8919" y2="5.05574375" width="0.127" layer="51"/>
-<wire x1="48.8919" y1="5.05574375" x2="48.8919" y2="-1.049096875" width="0.127" layer="51"/>
-<wire x1="48.8919" y1="-1.049096875" x2="40.972384375" y2="-1.049096875" width="0.127" layer="51"/>
-<wire x1="40.972384375" y1="-1.049096875" x2="40.972384375" y2="5.05574375" width="0.127" layer="51"/>
 <wire x1="52.0446" y1="20.713240625" x2="68.5546" y2="20.713240625" width="0.127" layer="51"/>
 <wire x1="68.5546" y1="20.713240625" x2="68.5546" y2="4.6926" width="0.127" layer="51"/>
 <wire x1="68.5546" y1="4.6926" x2="52.0446" y2="4.6926" width="0.127" layer="51"/>
@@ -244,8 +240,8 @@
 <wire x1="-5.7912" y1="4.70055" x2="15.709896875" y2="4.70055" width="0.127" layer="21"/>
 <wire x1="-5.7912" y1="20.6708" x2="15.7228" y2="20.6708" width="0.127" layer="21"/>
 <wire x1="15.719853125" y1="20.5613" x2="15.719853125" y2="4.71805" width="0.127" layer="21"/>
-<circle x="1.2446" y="23.45055" radius="1.25" width="0.127" layer="21"/>
-<circle x="1.2446" y="1.94945" radius="1.25" width="0.127" layer="21"/>
+<circle x="1.5" y="23.2" radius="1.25" width="0.127" layer="21"/>
+<circle x="1.5" y="2.2" radius="1.25" width="0.127" layer="21"/>
 <wire x1="0.699496875" y1="-0.030203125" x2="-0.753184375" y2="1.5230625" width="0.127" layer="21" curve="-91.952552"/>
 <wire x1="-0.757203125" y1="23.859490625" x2="0.73075625" y2="25.47111875" width="0.127" layer="21" curve="-91.952552"/>
 <wire x1="69.95815" y1="1.1471125" x2="69.9646" y2="24.334209375" width="0.127" layer="21"/>
@@ -261,15 +257,17 @@
 <pad name="21" x="17.78335" y="24.13155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="GND@1" x="12.70335" y="24.13155" drill="1.016" diameter="1.778" rot="R270"/>
 <pad name="35" x="12.70335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
-<wire x1="28.907384375" y1="5.05574375" x2="36.8269" y2="5.05574375" width="0.127" layer="51"/>
-<wire x1="36.8269" y1="5.05574375" x2="36.8269" y2="-1.049096875" width="0.127" layer="51"/>
-<wire x1="36.8269" y1="-1.049096875" x2="28.907384375" y2="-1.049096875" width="0.127" layer="51"/>
-<wire x1="28.907384375" y1="-1.049096875" x2="28.907384375" y2="5.05574375" width="0.127" layer="51"/>
+<wire x1="31.447384375" y1="6.32574375" x2="40.6369" y2="6.32574375" width="0.127" layer="51"/>
+<wire x1="40.6369" y1="6.32574375" x2="40.6369" y2="-1.049096875" width="0.127" layer="51"/>
+<wire x1="40.6369" y1="-1.049096875" x2="31.447384375" y2="-1.049096875" width="0.127" layer="51"/>
+<wire x1="31.447384375" y1="-1.049096875" x2="31.447384375" y2="6.32574375" width="0.127" layer="51"/>
 <wire x1="22.3266" y1="18.30705" x2="29.9466" y2="18.30705" width="0.127" layer="51"/>
 <wire x1="29.9466" y1="18.30705" x2="29.9466" y2="10.68705" width="0.127" layer="51"/>
 <wire x1="29.9466" y1="10.68705" x2="22.3266" y2="10.68705" width="0.127" layer="51"/>
 <wire x1="22.3266" y1="10.68705" x2="22.3266" y2="18.30705" width="0.127" layer="51"/>
 <wire x1="-5.8166" y1="20.59305" x2="-5.8166" y2="4.71805" width="0.127" layer="21"/>
+<pad name="45" x="53.34335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
+<pad name="46" x="55.88335" y="1.27155" drill="1.016" diameter="1.778" rot="R270"/>
 </package>
 </packages>
 <symbols>
@@ -288,8 +286,8 @@
 <pin name="IO14" x="-12.7" y="-17.78" visible="pin" length="short"/>
 <pin name="IO6" x="-12.7" y="17.78" visible="pin" length="short"/>
 <pin name="IO2" x="15.24" y="20.32" visible="pin" length="short" rot="R180"/>
-<pin name="IO42" x="15.24" y="17.78" visible="pin" length="short" rot="R180"/>
-<pin name="IO41" x="15.24" y="15.24" visible="pin" length="short" rot="R180"/>
+<pin name="IO42" x="15.24" y="12.7" visible="pin" length="short" rot="R180"/>
+<pin name="IO41" x="15.24" y="10.16" visible="pin" length="short" rot="R180"/>
 <pin name="VIN" x="-12.7" y="-22.86" visible="pin" length="short" direction="pwr"/>
 <pin name="GND@1" x="-12.7" y="-25.4" visible="pin" length="short" direction="pwr"/>
 <pin name="IO18" x="-12.7" y="5.08" visible="pin" length="short"/>
@@ -316,12 +314,14 @@
 <pin name="IO12" x="-12.7" y="-12.7" visible="pin" length="short"/>
 <pin name="IO13" x="-12.7" y="-15.24" visible="pin" length="short"/>
 <pin name="IO21" x="-12.7" y="-20.32" visible="pin" length="short"/>
+<pin name="IO45" x="15.24" y="15.24" visible="pin" length="short" rot="R180"/>
+<pin name="IO46" x="15.24" y="17.78" visible="pin" length="short" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
 <deviceset name="YB-ESP32-S3-ETH" prefix="IC">
 <description>&lt;b&gt;Yellobyte YB-ESP32-S3-ETH (ESP32S3 Ethernet/WiFi development board)&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/boards/YB-ESP32-S3-ETH"&gt; github.com/yellobyte &lt;/a&gt;&lt;br&gt;</description>
+Source: &lt;a href="https://github.com/yellobyte/YB-ESP32-S3-ETH"&gt; github.com/yellobyte/YB-ESP32-S3-ETH &lt;/a&gt;&lt;br&gt;</description>
 <gates>
 <gate name="G$1" symbol="YB-ESP32-S3-ETH" x="0" y="0"/>
 </gates>
@@ -356,6 +356,8 @@ Source: &lt;a href="https://github.com/yellobyte/ESP32-DevBoards-Getting-Started
 <connect gate="G$1" pin="IO40" pad="40"/>
 <connect gate="G$1" pin="IO41" pad="41"/>
 <connect gate="G$1" pin="IO42" pad="42"/>
+<connect gate="G$1" pin="IO45" pad="45"/>
+<connect gate="G$1" pin="IO46" pad="46"/>
 <connect gate="G$1" pin="IO5" pad="5"/>
 <connect gate="G$1" pin="IO6" pad="6"/>
 <connect gate="G$1" pin="IO7" pad="7"/>

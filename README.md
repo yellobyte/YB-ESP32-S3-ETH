@@ -1,10 +1,9 @@
 ## YB-ESP32-S3-ETH Development Board Overview:
-The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressif's ESP32-S3 MCU. Presently it comes in three different variants:  
-- with **ESP32-S3-WROOM-1U-N8R8 module** (8MB Flash/8MB PSRAM),
-- with **ESP32-S3-WROOM-1U-N4 module** (4MB Flash) and
-- without **ESP32-S3-WROOM-1(U) module** which allows you to solder on a module of your own choice.  
+The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressif's ESP32-S3 MCU. Presently it comes in two different variants:  
+- with **ESP32-S3-WROOM-1U-N8R2 module** (8MB Flash/2MB PSRAM),
+- without **ESP32-S3-WROOM-1(U) module** which allows you to solder on any ESP32-S3-WROOM module of your choice.  
 
-All variants provide **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, two status LEDs and **two microUSB connectors** for software upload, serial output, debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
+The board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, two status LEDs and a **USB-C connector** for software upload, serial output, JTAG debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
 
 ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_board_top.jpg)
 
@@ -17,17 +16,17 @@ If WiFi/BT is needed instead of or additionally to an Ethernet connection then t
 A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and exploring all hardware features.
 
 ## YB-ESP32-S3-ETH board features:
- - **ESP32-S3-WROOM-1U-N8R8** module with 8MB Flash, 8MB PSRAM or **ESP32-S3-WROOM-1U-N4** module with 4MB Flash or without ESP32-S3-WROOM module
+ - **ESP32-S3-WROOM-1U-N8R2** module with 8MB Flash, 2MB PSRAM or without ESP32-S3-WROOM module
  - **WiFi/BT IPEX** antenna connector (only boards with ESP32-S3-WROOM module)
  - **RJ45 10M/100M Ethernet** connector driven by onboard PHY controller chip Wiznet W5500
  - the **W5500** pins required to control the chip are hardwired to the ESP32-S3 GPIOs as follows:
    - *MOSI - GPIO11, MISO - GPIO13, SCK - GPIO12* (SPI bus data communication)
    - *SCS - GPIO14* (chip select, required for SPI bus control)
-   - *RST - GPIO21* (chip reset, needed only for chip reset without resetting the whole board)  
-   - *INT - GPIO18* (only if solder bridge on bottom is closed, seldomly needed)  
+   - *RST - GPIO21* (if solder bridge is closed, for chip reset without resetting the whole board)  
+   - *INT - GPIO18* (if solder bridge is closed, only needed by certain libraries)  
  - **control LEDs**. One LED labeled 'P' is connected to the 3.3V rail to indicate board power and the other LED labeled 'IO47' is connected to GPIO47 which can be used as status LED, for debugging purposes etc.
- - two **microUSB** ports. One is connected to the ESP32-S3 directly for debugging or serial output (labeled 'USB') and the other via USB-TTL bridge chip CH340 (labeled 'UART') for serial output and software upload (e.g. via ArduinoIDE, VSCode/PlatformIO etc). The ESP32-S3 contains an inbuild JTAG adapter hence [**debugging**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/debugging) via port 'USB' becomes fairly easy.
- - **hardware logic** for *automatic* software uploads (supported by most Development IDEs) via microUSB port labeled 'UART'.  
+ - **USB-C** port connected to the onboard CH334 USB hub chip. This allows for simultaneous JTAG debugging and serial output as well as software upload (e.g. via ArduinoIDE, VSCode/PlatformIO etc). The ESP32-S3 contains an inbuild JTAG adapter hence [**debugging**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/debugging) becomes fairly easy.
+ - **hardware logic** for *automatic* software uploads (supported by most Development IDEs) via USB-C port using the onboard CH343 USB-UART bridge chip.  
  - **pushbuttons**. One is labeled 'R' and resets the ESP32-S3 (shorts EN pin to ground) and the other one is labeled 'B' and shorts GPIO0 to ground when pressed. The latter is sometimes needed to force the board into boot mode.
  - **lots of available GPIOs** next to the ones already mentioned above.  
 
@@ -44,33 +43,33 @@ The boards outline, block diagram and schematic files are all located in folder 
 
 ## Powering the board:
 The board uses a LDO to drop the external supply voltage (5VDC min.) and internally operates on 3.3Volt. There are three (mutually exclusive) ways to provide power to the board.
-  - through the microUSB ports
+  - through the USB-C port
   - 5...9VDC applied to the VIN pin
   - 3.3VDC applied to the 3V3 pin(s)  
 
-Normal operating current of the idle board (all GPIOs unconnected, Ethernet Link down, WiFi disabled) is about 100mA (-N4) resp. 120mA (-N8R8). With Ethernet cable attached and Link up the current rises to about 165mA resp 180mA. With both Ethernet and WiFi active the board draws about 200...260mA (mainly depending on WiFi link).
+Normal operating current of the idle board (all GPIOs unconnected, Ethernet Link down, WiFi disabled) is about 100mA (-N4) resp. 110mA (-N8R2). With Ethernet cable attached and Link up the current rises to about 165mA resp 180mA. With both Ethernet and WiFi active the board draws about 200...260mA (mainly depending on WiFi link).
 
 ## Application hints:
-The board uses the popular WCH CH340X bridge chip between microUSB port labled 'UART' and the ESP32-S3. If you plan to use port 'UART' then you need to install the CH340X Drivers on your Laptop/PC. For Windows go [here](https://www.wch-ic.com/search?t=all&q=ch341) and select the newest version of the driver installer 'CH341SER.EXE'.  
+The board uses the popular WCH chips CH334P (USB hub) and CH343P (USB-UART bridge). If you haven't done yet then you need to install the CH343 Driver on your Laptop/PC. For Windows go [here](https://www.wch-ic.com/search?t=all&q=ch343) and download and install the newest version of the driver. Linux provides CH34x drivers by default. 
 
 ### Arduino IDE:
 As of Arduino ESP32 Core V3.1.1 you open the board list, enter "yb" and then select "**Yellobyte YB-ESP32-S3-ETH**". Now choose the proper settings for COM port, debug level, flash size, PSRAM, etc. as shown below. Be aware, since the ESP32-S3 MCU is very versatile there are a lot of build options to play with. Espressif's homepage offers some help.
 
-Settings that apply to the **-N8R8** board (8MB Flash/8MB PSRAM):  
+Settings that apply to the standard **-N8R2** board (8MB Flash/2MB PSRAM):  
 - Board: *Yellobyte YB-ESP32-S3-ETH*
 - Flash Size: *8MB*
 - Partition Scheme: *8MB with spiffs (...)*
-- PSRAM: *OPI PSRAM*  
+- PSRAM: *QSPI PSRAM*  
 
- ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH-N8R8_ArduinoIDE-Settings.jpg)  
+ ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH-N8R2_ArduinoIDE-Settings.jpg)  
 
-For the **-N8R2** board (8MB Flash/2MB PSRAM) the following settings apply: 
+For **-N8R8** boards (8MB Flash/8MB PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
 - Flash Size: *8MB*
 - Partition Scheme: *8MB with spiffs (...)*
-- PSRAM: *QSPI PSRAM*.
+- PSRAM: *OPI PSRAM*.
 
-For the **-N4** board (4MB Flash/no PSRAM) the following settings apply: 
+For **-N4** boards (4MB Flash/no PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
 - Flash Size: *4MB*
 - Partition Scheme: *Default 4MB*
@@ -85,154 +84,218 @@ Just create a new project and give it a name, then go to board selection, enter 
 
 Examples that need to be build with an older framework still come with a folder "boards" which keeps the necessary *.json board definition files. 
 
-### Using the two USB ports:
+### Using the USB-C port:
 
-With both MicroUSB ports connected simultaneously you will see 2 COM ports and an additional usb device "USB JTAG/serial debug unit". How to use this device for debugging is explained in detail [**here**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/debugging).
+With the board connected to your PC/Laptop you will see 3 additional devices. Two COM ports "Serial USB device" and "USB-Enhanced-Serial CH343" and a device "USB JTAG/serial debug unit" (the naming applies to Windows). 
 
-**Serial output** generated with Serial.print() can be directed either to port **'USB'** or port **'UART'**. 
+You can connect a serial monitor program to device "USB-Enhanced-Serial CH343" and watch the serial output generated with Serial.print(). Please note: This connection is **not** affected by any board reset. 
 
-In ArduinoIDE choose as follows:  
-- **USB CDC On Boot: Disabled**, serial output goes to port **UART**
-- **USB CDC On Boot: Enabled**, serial output goes to port **USB**
+Device "USB JTAG/serial debug unit" lets you simultaneously debug the board via the ESP32-S3 integrated JTAG debug circuitry. How to use the latter for debugging is explained in detail [**here**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/debugging).  
+After a board reset a debugger tool (e.g. OpenOCD) will temporarily lose the JTAG debug connection since "USB JTAG/serial debug unit" is provided by the ESP32-S3 MCU (connected to the USB hub chip on GPIO19/20).
 
-In PlatformIO set a build flag in file platformio.ini:  
-- **ARDUINO_USB_CDC_ON_BOOT=0**, serial output goes to port **UART**
-- **ARDUINO_USB_CDC_ON_BOOT=1**, serial output goes to port **USB**
+**Remark:**  
 
-**Remarks:**  
-
-The MicroUSB socket labeled 'USB' is wired directly to the ESP32-S3 MCU (GPIO19/GPIO20). Therefore when the development board gets resetted a PC/Laptop connected to this port might temporarily lose connection (the associated COM port will disappear for a second or two). This can confuse some terminal programs. Preferably port UART is used for serial output and port USB for debugging.  
-
-The PlatformIO builder scripts (*.json) for modules containing ESP32-S3/C3 already define the build flag _ARDUINO_USB_MODE=1_. It disables the USB-OTG mode. If not disabled or you want to override it you can (re-)define it in your platformio.ini control file. Normally you don't have to worry about it.
+The PlatformIO builder scripts (*.json) for modules containing ESP32-S3/C3 already define the build flag _ARDUINO_USB_MODE=1_. This enables the USB-JTAG mode and disables USB-OTG. If not disabled or you want to override it you can (re-)define it in your platformio.ini control file. Normally you don't have to worry about it.
    
 ### Software Upload to the board:
 
 The board contains the usual ESP32 reset and upload circuitry which makes automatic uploading new software to the board with your IDE a breeze. 
 
-However, with brandnew and previously unflashed boards the upload might fail and you will only see the following after powering up the board:
+Below the PlatformIO log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP). Please note: the example has been build with option `CORE_DEBUG_LEVEL=4` on PlatformIO (is equivalent to `Core Debug Level: "Debug"` on ArduinoIDE) and therefore produces lots of additional output (chip info, memory info, etc.) at startup.
 ```
-ESP-ROM:esp32s3-20210327
-23:10:07.248 > Build:Mar 27 2021
-23:10:07.251 > rst:0x7 (TG0WDT_SYS_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
-23:10:07.256 > Saved PC:0x40049087
-23:10:07.256 > invalid header: 0xffffffff
-23:10:07.259 > invalid header: 0xffffffff
-....
-....
-```
-In such case **put the ESP32-S3 into upload mode manually** by keeping the **'B'** button pressed, then pressing/releasing the **'R'** button and finally releasing the **'B'** button. The serial monitor output will subsequently confirm the boards readiness:  
+Executing task: C:\Users\tj\.platformio\penv\Scripts\platformio.exe run --target upload --target monitor --upload-port COM3 --monitor-port COM3 
 
-```
-....
-23:19:07.147 > invalid header: 0xffffffff
-23:19:07.453 > ESP-ROM:esp32s3-20210327
-23:19:07.453 > Build:Mar 27 2021
-23:19:07.453 > rst:0x1 (POWERON),boot:0x0 (DOWNLOAD(USB/UART0))
-23:19:07.459 > waiting for download
-```
-Below the log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP).  
-```
-Executing task: C:\Users\tj\.platformio\penv\Scripts\platformio.exe run --target upload --target monitor --environment n8r8 --upload-port COM7 --monitor-port COM7 
-
-Processing n8r8 (board: yb-esp32-s3-eth-n8r8; platform: espressif32; framework: arduino)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Processing release (platform: https://github.com/pioarduino/platform-espressif32/releases/download/stable/platform-espressif32.zip; framework: arduino; board: yb_esp32s3_eth)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Verbose mode can be enabled via `-v, --verbose` option
-CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/yb-esp32-s3-eth-n8r8.html
-PLATFORM: Espressif 32 (6.1.0) > YB-ESP32-S3-ETH-N8R8 (8 MB QD Flash, 8 MB Octal SPI PSRAM)
+PYTHONEXE updated to penv environment: C:\Users\tj\.platformio\penv\Scripts\python.exe
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/yb_esp32s3_eth.html
+PLATFORM: Espressif 32 (55.3.30) > YelloByte YB-ESP32-S3-ETH
 HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
 DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
 PACKAGES: 
- - framework-arduinoespressif32 @ 3.20007.0 (2.0.7) 
- - tool-esptoolpy @ 1.40500.0 (4.5.0) 
+ - contrib-piohome @ 3.4.4 
+ - framework-arduinoespressif32 @ 3.3.0 
+ - framework-arduinoespressif32-libs @ 5.5.0+sha.b66b5448e0 
+ - tool-dfuutil-arduino @ 1.11.0 
+ - tool-esptoolpy @ 5.0.2 
  - tool-mkfatfs @ 2.0.1 
- - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mklittlefs @ 3.2.0 
+ - tool-mklittlefs4 @ 4.0.2 
  - tool-mkspiffs @ 2.230.0 (2.30) 
- - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
- - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+ - toolchain-xtensa-esp-elf @ 14.2.0+20241119
+*** Applied include path shortening for 325 framework paths ***
+*** Path length reduced from 37477 to ~13517 characters ***
+*** Estimated savings: 23400 characters ***
 LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
 LDF Modes: Finder ~ chain, Compatibility ~ soft
-Found 62 compatible libraries
+Found 42 compatible libraries
 Scanning dependencies...
 Dependency Graph
-|-- Ethernet @ 2.0.0
+|-- Ethernet @ 2.0.2
 Building in release mode
-Compiling .pio\build\n8r8\src\main.cpp.o
-Linking .pio\build\n8r8\firmware.elf
-Retrieving maximum program size .pio\build\n8r8\firmware.elf
-Checking size .pio\build\n8r8\firmware.elf
+Retrieving maximum program size .pio\build\release\firmware.elf
+Checking size .pio\build\release\firmware.elf
 Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
-RAM:   [=         ]   6.2% (used 20344 bytes from 327680 bytes)
-Flash: [=         ]   8.8% (used 295089 bytes from 3342336 bytes)
-Building .pio\build\n8r8\firmware.bin
-esptool.py v4.5
-Creating esp32s3 image...
-Merged 2 ELF sections
-Successfully created esp32s3 image.
+RAM:   [=         ]   6.3% (used 20700 bytes from 327680 bytes)
+Flash: [=         ]  10.1% (used 337139 bytes from 3342336 bytes)
 Configuring upload protocol...
 AVAILABLE: cmsis-dap, esp-bridge, esp-builtin, esp-prog, espota, esptool, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa
 CURRENT: upload_protocol = esptool
 Looking for upload port...
-Using manually specified: COM7
-Uploading .pio\build\n8r8\firmware.bin
-esptool.py v4.5
-Serial port COM7
-Connecting....
-Chip is ESP32-S3 (revision v0.2)
-Features: WiFi, BLE
-Crystal is 40MHz
-MAC: 48:27:e2:e8:9a:68
-Uploading stub...
-Running stub...
-Stub running...
-Changing baud rate to 921600
+Uploading .pio\build\release\firmware.bin
+esptool v5.0.2
+Serial port COM3:
+Connecting...
+Connected to ESP32-S3 on COM3:
+Chip type:          ESP32-S3 (QFN56) (revision v0.2)
+Features:           Wi-Fi, BT 5 (LE), Dual Core + LP Core, 240MHz, Embedded PSRAM 2MB (AP_3v3)
+Crystal frequency:  40MHz
+MAC:                20:6e:f1:e0:3c:a8
+
+Uploading stub flasher...
+Running stub flasher...
+Stub flasher running.
+Changing baud rate to 921600...
 Changed.
+
 Configuring flash size...
-Flash will be erased from 0x00000000 to 0x00003fff...
+Auto-detected flash size: 8MB
+Flash will be erased from 0x00000000 to 0x00004fff...
 Flash will be erased from 0x00008000 to 0x00008fff...
 Flash will be erased from 0x0000e000 to 0x0000ffff...
-Flash will be erased from 0x00010000 to 0x00058fff...
-Compressed 15040 bytes to 10333...
-Writing at 0x00000000... (100 %)
-Wrote 15040 bytes (10333 compressed) at 0x00000000 in 0.2 seconds (effective 495.0 kbit/s)...
-Hash of data verified.
-Compressed 3072 bytes to 146...
-Writing at 0x00008000... (100 %)
-Wrote 3072 bytes (146 compressed) at 0x00008000 in 0.0 seconds (effective 832.6 kbit/s)...
-Hash of data verified.
-Compressed 8192 bytes to 47...
-Writing at 0x0000e000... (100 %)
-Wrote 8192 bytes (47 compressed) at 0x0000e000 in 0.1 seconds (effective 1239.1 kbit/s)...
-Hash of data verified.
-Compressed 295456 bytes to 166046...
-Writing at 0x00010000... (9 %)
-Writing at 0x0001bdd2... (18 %)
-Writing at 0x00024856... (27 %)
-Writing at 0x0002a32d... (36 %)
-Writing at 0x0002f96c... (45 %)
-Writing at 0x00034d30... (54 %)
-Writing at 0x0003a7b5... (63 %)
-Writing at 0x00043e7f... (72 %)
-Writing at 0x0004c14a... (81 %)
-Writing at 0x000517e1... (90 %)
-Writing at 0x0005751a... (100 %)
-Wrote 295456 bytes (166046 compressed) at 0x00010000 in 2.3 seconds (effective 1046.6 kbit/s)...
+Flash will be erased from 0x00010000 to 0x00062fff...
+SHA digest in image updated.
+Compressed 20256 bytes to 13096...
+
+Writing at 0x00000000 [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   0.0% 0/13096 bytes...
+...
+...
+...
+Writing at 0x00062680 [██████████████████████████████] 100.0% 180240/180240 bytes... 
+Wrote 337536 bytes (180240 compressed) at 0x00010000 in 2.4 seconds (1148.1 kbit/s).
 Hash of data verified.
 
-Leaving...
 Hard resetting via RTS pin...
 
 Please build project in debug configuration to get more details about an exception.
 See https://docs.platformio.org/page/projectconf/build_configurations.html
 
---- Terminal on COM7 | 115200 8-N-1
---- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time        
+
+--- Terminal on COM3 | 115200 8-N-1
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
 --- More details at https://bit.ly/pio-monitor-filters
 --- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
-23:27:28.299 > 
-23:27:28.299 > Please make sure Ethernet cable is connected between board and switch and DHCP service is available in your LAN.
-23:27:28.307 > blinkTask has started.
-23:27:28.860 > Ethernet link is down.
-23:27:29.861 > Ethernet link is down.
+00:51:10.583 > ESP-ROM:esp32s3-20210327
+00:51:10.589 > Build:Mar 27 2021
+00:51:10.589 > rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+00:51:10.589 > SPIWP:0xee
+00:51:10.589 > mode:DIO, clock div:1
+00:51:10.589 > load:0x3fce2820,len:0x1180
+00:51:10.674 > load:0x403c8700,len:0xc2c
+00:51:10.674 > load:0x403cb700,len:0x311c
+00:51:10.674 > entry 0x403c88b8
+00:51:10.899 > [     2][I][esp32-hal-psram.c:104] psramAddToHeap(): PSRAM added to the heap.
+00:51:10.914 > =========== Before Setup Start ===========
+00:51:10.914 > Chip Info:
+00:51:10.914 > ------------------------------------------
+00:51:10.919 >   Model             : ESP32-S3
+00:51:10.922 >   Package           : 0
+00:51:10.922 >   Revision          : 0.02
+00:51:10.922 >   Cores             : 2
+00:51:10.929 >   CPU Frequency     : 240 MHz
+00:51:10.929 >   XTAL Frequency    : 40 MHz
+00:51:10.953 >   Features Bitfield : 0x00000012
+00:51:10.953 >   Embedded Flash    : No
+00:51:10.953 >   Embedded PSRAM    : No
+00:51:10.953 >   2.4GHz WiFi       : Yes
+00:51:10.953 >   Classic BT        : No
+00:51:10.953 >   BT Low Energy     : Yes
+00:51:10.953 >   IEEE 802.15.4     : No
+00:51:10.953 > ------------------------------------------
+00:51:10.953 > INTERNAL Memory Info:
+00:51:10.959 > ------------------------------------------
+00:51:10.959 >   Total Size        :   394764 B ( 385.5 KB)
+00:51:10.965 >   Free Bytes        :   361544 B ( 353.1 KB)
+00:51:10.969 >   Allocated Bytes   :    28316 B (  27.7 KB)
+00:51:10.972 >   Minimum Free Bytes:   356396 B ( 348.0 KB)
+00:51:10.972 >   Largest Free Block:   303092 B ( 296.0 KB)
+00:51:10.979 > ------------------------------------------
+00:51:10.986 > SPIRAM Memory Info:
+00:51:10.986 > ------------------------------------------
+00:51:10.989 >   Total Size        :  2097152 B (2048.0 KB)
+00:51:10.989 >   Free Bytes        :  2095104 B (2046.0 KB)
+00:51:10.999 >   Allocated Bytes   :        0 B (   0.0 KB)
+00:51:11.003 >   Minimum Free Bytes:  2095104 B (2046.0 KB)
+00:51:11.009 >   Largest Free Block:  2064372 B (2016.0 KB)
+00:51:11.009 >   Bus Mode          : QSPI
+00:51:11.009 > ------------------------------------------
+00:51:11.009 > Flash Info:
+00:51:11.019 > ------------------------------------------
+00:51:11.019 >   Chip Size         :  8388608 B (8 MB)
+00:51:11.019 >   Block Size        :    65536 B (  64.0 KB)
+00:51:11.029 >   Sector Size       :     4096 B (   4.0 KB)
+00:51:11.029 >   Page Size         :      256 B (   0.2 KB)
+00:51:11.035 >   Bus Speed         : 80 MHz
+00:51:11.039 >   Bus Mode          : QIO
+00:51:11.039 > ------------------------------------------
+00:51:11.049 > Partitions Info:
+00:51:11.049 > ------------------------------------------
+00:51:11.052 >                 nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
+00:51:11.072 >             otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
+00:51:11.085 >                app0 : addr: 0x00010000, size:  3264.0 KB, type:  APP, subtype: OTA_0
+00:51:11.106 >                app1 : addr: 0x00340000, size:  3264.0 KB, type:  APP, subtype: OTA_1
+00:51:11.106 >              spiffs : addr: 0x00670000, size:  1536.0 KB, type: DATA, subtype: SPIFFS
+00:51:11.129 >            coredump : addr: 0x007F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
+00:51:11.129 > ------------------------------------------
+00:51:11.129 > Software Info:
+00:51:11.129 > ------------------------------------------
+00:51:11.129 >   Compile Date/Time : Nov 25 2025 23:05:14
+00:51:11.129 >   ESP-IDF Version   : v5.5-1-gb66b5448e0
+00:51:11.129 >   Arduino Version   : 3.3.0
+00:51:11.129 > ------------------------------------------
+00:51:11.129 > Board Info:
+00:51:11.129 > ------------------------------------------
+00:51:11.129 >   Arduino Board     : YelloByte YB-ESP32-S3-ETH
+00:51:11.134 >   Arduino Variant   : yb_esp32s3_eth
+00:51:11.134 >   Core Debug Level  : 4
+00:51:11.139 >   Arduino Runs Core : 1
+00:51:11.139 >   Arduino Events on : 1
+00:51:11.139 >   Arduino USB Mode  : 1
+00:51:11.139 >   CDC On Boot       : 0
+00:51:11.139 > ============ Before Setup End ============
+00:51:12.253 > 
+00:51:12.253 > Please make sure Ethernet cable is connected between board and switch and DHCP service is available in your LAN.
+00:51:12.253 > =========== After Setup Start ============
+00:51:12.262 > INTERNAL Memory Info:
+00:51:12.262 > ------------------------------------------
+00:51:12.270 >   Total Size        :   394764 B ( 385.5 KB)
+00:51:12.272 >   Free Bytes        :   358764 B ( 350.4 KB)
+00:51:12.272 >   Allocated Bytes   :    30968 B (  30.2 KB)
+00:51:12.272 >   Minimum Free Bytes:   353616 B ( 345.3 KB)
+00:51:12.288 >   Largest Free Block:   303092 B ( 296.0 KB)
+00:51:12.289 > ------------------------------------------
+00:51:12.289 > SPIRAM Memory Info:
+00:51:12.289 > ------------------------------------------
+00:51:12.289 >   Total Size        :  2097152 B (2048.0 KB)
+00:51:12.304 >   Free Bytes        :  2093068 B (2044.0 KB)
+00:51:12.305 >   Allocated Bytes   :     1844 B (   1.8 KB)
+00:51:12.314 >   Minimum Free Bytes:  2093068 B (2044.0 KB)
+00:51:12.314 >   Largest Free Block:  2064372 B (2016.0 KB)
+00:51:12.320 > ------------------------------------------
+00:51:12.322 > GPIO Info:
+00:51:12.322 > ------------------------------------------
+00:51:12.329 >   GPIO : BUS_TYPE[bus/unit][chan]
+00:51:12.329 >   --------------------------------------
+00:51:12.337 >     43 : UART_TX[0]
+00:51:12.337 >     44 : UART_RX[0]
+00:51:12.337 >     47 : GPIO
+00:51:12.338 > ============ After Setup End =============
+00:51:12.338 > blinkTask has started.
+00:51:22.922 > Ethernet link is up.
+00:51:23.021 > DHCP successful. Local IP: 192.168.1.37
+00:51:33.026 > Ethernet link is up.
+00:51:33.026 > Local IP: 192.168.1.37
 ....
 ```
 ### Integrating this board into your own PCB design projects:
@@ -243,6 +306,4 @@ Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/do
 
 
 ## Final Remark for first usage: 
-**>>> All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'. <<<**  
-
-Means the status LED 'IO47' blinks fast whith power applied and blinks slow with obtained IP address (DHCP via Ethernet).
+**All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'.** This means the status LED 'IO47' blinks fast whith power applied and blinks slow with obtained IP address (DHCP via Ethernet).
