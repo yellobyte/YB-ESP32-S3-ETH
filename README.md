@@ -63,13 +63,13 @@ Settings that apply to the standard **-N8R2** board (8MB Flash/2MB PSRAM):
 
  ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH-N8R2_ArduinoIDE-Settings.jpg)  
 
-For **-N8R8** boards (8MB Flash/8MB PSRAM) the following settings apply: 
+For **-N8R8** modules (8MB Flash/8MB PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
 - Flash Size: *8MB*
 - Partition Scheme: *8MB with spiffs (...)*
 - PSRAM: *OPI PSRAM*.
 
-For **-N4** boards (4MB Flash/no PSRAM) the following settings apply: 
+For **-N4** modules (4MB Flash/no PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
 - Flash Size: *4MB*
 - Partition Scheme: *Default 4MB*
