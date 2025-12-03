@@ -42,7 +42,7 @@ Just for information purposes: The ESP32-S3-WROOM-1(U) module family comprises s
 The boards outline, block diagram and schematic files are all located in folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc), together with data sheets for Espressif's MCU ESP32-S3 and the ESP32-S3-WROOM-1(U) modules.
 
 ## Powering the board:
-The board uses a LDO to drop the external supply voltage (5VDC min.) and internally operates on 3.3Volt. There are three (mutually exclusive) ways to provide power to the board.
+The board uses a LDO to drop the external supply voltage (5VDC min.) and internally operates on 3.3Volt. There are three different ways to provide power to the board.
   - through the USB-C port
   - 5...9VDC applied to the VIN pin
   - 3.3VDC applied to the 3V3 pin(s)  
