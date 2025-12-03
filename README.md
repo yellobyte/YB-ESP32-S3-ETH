@@ -1,5 +1,5 @@
 ## YB-ESP32-S3-ETH Development Board Overview:
-The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressif's ESP32-S3 MCU. Presently it comes in two different variants:  
+The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressif's ESP32-S3 MCU. Version 2.0 has been released recently and succeeds the earlier board versions [1.x](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc/retired_board_versions_V1.x). It presently comes in two different variants:  
 - with **ESP32-S3-WROOM-1U-N8R2 module** (8MB Flash/2MB PSRAM),
 - without **ESP32-S3-WROOM-1(U) module** which allows you to solder on any ESP32-S3-WROOM module of your choice.  
 
