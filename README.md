@@ -16,8 +16,8 @@ If WiFi/BT is needed instead of or additionally to an Ethernet connection then t
 A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and exploring all hardware features.
 
 ## YB-ESP32-S3-ETH board features:
- - **ESP32-S3-WROOM-1U-N8R2** module with 8MB Flash, 2MB PSRAM (if populated)
- - **WiFi/BT IPEX** antenna connector (only boards with ESP32-S3-WROOM module)
+ - **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) or no module
+ - **WiFi/BT IPEX** antenna connector (on ESP32-S3-WROOM-1U module)
  - **RJ45 10M/100M Ethernet** connector driven by onboard PHY controller chip Wiznet W5500
  - the **W5500** pins required to control the chip are hardwired to the ESP32-S3 GPIOs as follows:
    - *MOSI - GPIO11, MISO - GPIO13, SCK - GPIO12* (SPI bus data communication)
