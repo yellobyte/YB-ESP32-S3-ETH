@@ -99,9 +99,9 @@ The PlatformIO builder scripts (*.json) for modules containing ESP32-S3/C3 alrea
    
 ### Software Upload to the board:
 
-The board contains the usual ESP32 reset and upload circuitry which makes automatic uploading new software to the board with your IDE a breeze. 
+Uploading new software to boards with your IDE is a breeze. Select the correct COM port and upload the program. The integrated hardware logic will put the board into upload mode automatically.
 
-Below the PlatformIO log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP). Please note: the example has been build with option `CORE_DEBUG_LEVEL=4` on PlatformIO (is equivalent to `Core Debug Level: "Debug"` on ArduinoIDE) and therefore produces lots of additional output (chip info, memory info, etc.) at startup.
+Below the PlatformIO log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP). Please note: the example has been build with option `CORE_DEBUG_LEVEL=4` on PlatformIO (which is equivalent to `Core Debug Level: "Debug"` on ArduinoIDE) and therefore produces lots of additional output (chip info, memory info, etc.) at startup.
 ```
 Executing task: C:\Users\tj\.platformio\penv\Scripts\platformio.exe run --target upload --target monitor --upload-port COM3 --monitor-port COM3 
 
@@ -297,6 +297,14 @@ See https://docs.platformio.org/page/projectconf/build_configurations.html
 00:51:33.026 > Ethernet link is up.
 00:51:33.026 > Local IP: 192.168.1.37
 ....
+```
+However, at any time and if needed you can force the ESP32-S3 into upload mode *manually*. Keep the **'B'** button pressed, then press/release the **'R'** button and finally release the **'B'** button. The serial monitor output will subsequently confirm the boards readiness for getting flashed.  
+```
+....
+23:19:07.453 > ESP-ROM:esp32s3-20210327
+23:19:07.453 > Build:Mar 27 2021
+23:19:07.453 > rst:0x1 (POWERON),boot:0x0 (DOWNLOAD(USB/UART0))
+23:19:07.459 > waiting for download
 ```
 ### Integrating this board into your own PCB design projects:
 
