@@ -91,7 +91,6 @@ With the board connected to your PC/Laptop you will see 3 additional devices. Tw
 You can connect a serial monitor program to device "USB-Enhanced-Serial CH343" and watch the serial output generated with Serial.print(). Please note: This connection is **not** affected by any board reset. 
 
 Device "USB JTAG/serial debug unit" lets you simultaneously debug the board via the ESP32-S3 integrated JTAG debug circuitry. How to use the latter for debugging is explained in detail [**here**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/debugging).  
-After a board reset a debugger tool (e.g. OpenOCD) will temporarily lose the JTAG debug connection since "USB JTAG/serial debug unit" is provided by the ESP32-S3 MCU (connected to the USB hub chip on GPIO19/20).
 
 **Remark:**  
 
