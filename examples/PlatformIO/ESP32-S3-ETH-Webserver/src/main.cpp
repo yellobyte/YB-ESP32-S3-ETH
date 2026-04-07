@@ -4,7 +4,7 @@
   The sketch lets you switch on/off the status LED via Webserver listening on RJ45 Ethernet port 
   integrated on the YB-ESP32-S3-ETH board. 
 
-  Last updated 2025-02-13, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-04-07, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -22,14 +22,6 @@ void setup() {
   digitalWrite(LED_BUILTIN, LOW);                  // LED off
 	
   Serial.begin(115200);
-  // port 'USB' (directly attached to ESP32-S3 chip !) will be gone for a few seconds after resetting the board, 
-  // if you dislike it you better direct serial output to port 'UART' (ARDUINO_USB_CDC_ON_BOOT=0 in platformio.ini)  
-#if ARDUINO_USB_CDC_ON_BOOT == 1
-  // we continue only when serial port becomes available: important when serial output is directed to port 'USB'
-  while (!Serial);
-  delay(100);
-#endif	
-
   Serial.println();
   Serial.print("Initializing Ethernet...");
   Ethernet.init(driver);

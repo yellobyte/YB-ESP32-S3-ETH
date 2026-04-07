@@ -7,7 +7,7 @@
   IMPORTANT:  
   Utilizes W5500 interrupts, therefore solder bridge "INT" on bottom of dev board must be closed!
 
-  Last updated 2023-06-19, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-04-07, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -84,13 +84,6 @@ void setup() {
   digitalWrite(GPIO_STATUS_LED, LOW);              // LED off
 	
   Serial.begin(115200);
-  // port 'USB' (directly attached to ESP32-S3 chip !) will be gone for a few seconds after resetting the board, 
-  // if you dislike it you better direct serial output to port 'UART' (ARDUINO_USB_CDC_ON_BOOT=0 in platformio.ini)  
-#if ARDUINO_USB_CDC_ON_BOOT == 1
-  // we continue only when serial port becomes available: important when serial output is directed to port 'USB'
-  while (!Serial);
-  delay(100);
-#endif	
 
   WiFi.begin();                                    // initializes needed network settings
   WiFi.mode(WIFI_OFF);                             // WiFi not used any further

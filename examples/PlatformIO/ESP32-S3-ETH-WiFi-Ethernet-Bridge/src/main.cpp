@@ -4,7 +4,7 @@
   The sketch starts a server listening for a client on telnet port 23 on both Ethernet and WiFi
   and simply forwards all incoming data to the opposite side. Only one client per side allowed.
 
-  Last updated 2025-02-13, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-04-07, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -42,14 +42,6 @@ void setup() {
   digitalWrite(LED_BUILTIN, LOW);                  // LED off
 	
   Serial.begin(115200);
-  // port 'USB' (directly attached to ESP32-S3 chip !) will be gone for a few seconds after resetting the board, 
-  // if you dislike it you better direct serial output to port 'UART' (ARDUINO_USB_CDC_ON_BOOT=0 in platformio.ini)  
-#if ARDUINO_USB_CDC_ON_BOOT == 1
-  // we continue only when serial port 'USB' becomes available
-  while (!Serial);     	
-#endif	
-
-  delay(1000);
   Serial.println();
   Serial.println("Please connect Ethernet cable between board and switch and make sure DHCP service is available in your LAN.");
 
