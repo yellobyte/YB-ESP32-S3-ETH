@@ -6,7 +6,7 @@
                 blink normal    - with Ethernet cable attached to a switch and the link is up
                 blink very slow - local IP has been obtained from DHPC service       
 
-  Last updated 2025-02-13, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-04-07, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -30,22 +30,16 @@ void blinkTask (void *parameter) {
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);           // status LED off  
-#ifdef W5500_RESET  
-  pinMode(W5500_RST, OUTPUT);
-  digitalWrite(W5500_RST, LOW);  
+
+#ifdef W5500_RESET
+  pinMode(W5500_RST, OUTPUT);               // needs solder bridge closed
+  digitalWrite(W5500_RST, LOW);
   delay(500);
   pinMode(W5500_RST, INPUT);
 #endif
 
   Serial.begin(115200);
-  // Port 'USB' (directly attached to ESP32-S3 chip !) will be gone for a few seconds after resetting the board, 
-  // if you dislike it you better direct serial output to port 'UART' (ARDUINO_USB_CDC_ON_BOOT=0 in platformio.ini).  
-#if ARDUINO_USB_CDC_ON_BOOT == 1  
-  // we continue only when serial port becomes available: important when serial output is directed to port 'USB'
-  while (!Serial);                                 
-#endif    
 
-  delay(1000);
   // start the backgound task responsible for letting the status LED blink
   xTaskCreatePinnedToCore(blinkTask,        // task function
                           "blinkTask",      // name of task
