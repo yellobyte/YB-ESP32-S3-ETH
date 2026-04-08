@@ -36,6 +36,7 @@ void setup() {
   digitalWrite(W5500_RST, LOW);
   delay(500);
   pinMode(W5500_RST, INPUT);
+  delay(500);	
 #endif
 
   Serial.begin(115200);
