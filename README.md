@@ -86,7 +86,7 @@ Examples that need to be build with an older framework still come with a folder 
 
 ### Using the USB-C port:
 
-With the board connected to your PC/Laptop you will see 3 additional devices. Two COM ports "Serial USB device" and "USB-Enhanced-Serial CH343" and a device "USB JTAG/serial debug unit" (the naming applies to Windows). 
+With the board connected to your PC/Laptop you will see 3 additional devices. Two COM ports "Serial USB device" and "USB-Enhanced-Serial CH343" and a device "USB JTAG/serial debug unit" (or similar). 
 
 You can connect a serial monitor program to device "USB-Enhanced-Serial CH343" and watch the serial output generated with Serial.print(). Please note: This connection is **not** affected by any board reset. 
 
