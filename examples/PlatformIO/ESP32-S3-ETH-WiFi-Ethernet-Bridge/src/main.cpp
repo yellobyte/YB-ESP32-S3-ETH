@@ -29,14 +29,12 @@ bool ethClientOn = false, wifiClientOn = false;
 
 void setup() {                       
 #ifdef W5500_HARD_RESET
-  // W5500 hard reset, hardly ever needed
   pinMode(W5500_RST, OUTPUT);
-  digitalWrite(W5500_RST, LOW); 
-  delay(1);
-  digitalWrite(W5500_RST, HIGH);
-  pinMode(W5500_RST, INPUT);
+  digitalWrite(W5500_RST, LOW);                    // needs RST solder bridge closed
   delay(10);
-#endif  
+  pinMode(W5500_RST, INPUT);
+  delay(250);
+#endif 
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);                  // LED off

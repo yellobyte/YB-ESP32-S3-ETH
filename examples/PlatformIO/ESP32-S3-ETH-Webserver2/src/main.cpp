@@ -83,6 +83,14 @@ void setup() {
   pinMode(GPIO_STATUS_LED, OUTPUT);
   digitalWrite(GPIO_STATUS_LED, LOW);              // LED off
 	
+#ifdef W5500_HARD_RESET
+  pinMode(W5500_RST, OUTPUT);
+  digitalWrite(W5500_RST, LOW);                    // needs RST solder bridge closed
+  delay(10);
+  pinMode(W5500_RST, INPUT);
+  delay(250);
+#endif 
+	
   Serial.begin(115200);
 
   WiFi.begin();                                    // initializes needed network settings

@@ -27,16 +27,16 @@ ICMPPing ping(pingSocket, (uint16_t)random(0, 255));
 void setup() {
   pinMode(GPIO_STATUS_LED, OUTPUT);
   digitalWrite(GPIO_STATUS_LED, LOW);       // status LED off  
+	
+#ifdef W5500_HARD_RESET
+  pinMode(W5500_RST, OUTPUT);
+  digitalWrite(W5500_RST, LOW);             // needs RST solder bridge closed
+  delay(10);
+  pinMode(W5500_RST, INPUT);
+  delay(250);
+#endif 
 
   Serial.begin(115200);
-  // Port 'USB' (directly attached to ESP32-S3 chip !) will be gone for a few seconds after resetting the board, 
-  // if you dislike it you better direct serial output to port 'UART' (ARDUINO_USB_CDC_ON_BOOT=0 in platformio.ini).  
-#if ARDUINO_USB_CDC_ON_BOOT == 1  
-  // we continue only when serial port becomes available: important when serial output is directed to port 'USB'
-  while (!Serial);                                 
-#endif	  
-
-  delay(1000);
   Serial.println();
   Serial.println("Please make sure Ethernet cable is connected between board and switch and DHCP service is available in your LAN.");
 

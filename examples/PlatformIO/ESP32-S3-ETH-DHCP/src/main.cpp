@@ -31,13 +31,13 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);           // status LED off  
 
-#ifdef W5500_RESET
-  pinMode(W5500_RST, OUTPUT);               // needs solder bridge closed
-  digitalWrite(W5500_RST, LOW);
-  delay(500);
+#ifdef W5500_HARD_RESET
+  pinMode(W5500_RST, OUTPUT);
+  digitalWrite(W5500_RST, LOW);             // needs RST solder bridge closed
+  delay(10);
   pinMode(W5500_RST, INPUT);
-  delay(500);	
-#endif
+  delay(250);
+#endif 
 
   Serial.begin(115200);
 

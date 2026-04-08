@@ -19,6 +19,14 @@ bool ledOn = false;
 void setup() {                       
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);                  // LED off
+	
+#ifdef W5500_HARD_RESET
+  pinMode(W5500_RST, OUTPUT);
+  digitalWrite(W5500_RST, LOW);                    // needs RST solder bridge closed
+  delay(10);
+  pinMode(W5500_RST, INPUT);
+  delay(250);
+#endif 
   
   Serial.begin(115200);
   Serial.println();

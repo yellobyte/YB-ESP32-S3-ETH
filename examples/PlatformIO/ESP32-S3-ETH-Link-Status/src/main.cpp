@@ -5,7 +5,7 @@
   The status LED should be "ON" when an ethernet cable is properly connected between board and a switch.
 	Getting an IP address via DHCP is not tested.
 
-  Last updated 2025-02-13, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-04-08, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -16,22 +16,16 @@ W5500Driver driver(W5500_SS);
 void setup() {
 	pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);               // status LED off  
-#ifdef W5500_RESET  
+	
+#ifdef W5500_HARD_RESET
   pinMode(W5500_RST, OUTPUT);
-  digitalWrite(W5500_RST, LOW);  
-  delay(500);
+  digitalWrite(W5500_RST, LOW);                 // needs RST solder bridge closed
+  delay(10);
   pinMode(W5500_RST, INPUT);
-#endif  
+  delay(250);
+#endif 
 	
   Serial.begin(115200);
-  // Port 'USB' (directly attached to ESP32-S3 chip !) will be gone for a few seconds after resetting the board, 
-  // if you dislike it you better direct serial output to port 'UART' (ARDUINO_USB_CDC_ON_BOOT=0 in platformio.ini).
-#if ARDUINO_USB_CDC_ON_BOOT == 1
-  // we continue only when serial port becomes available: important when serial output is directed to port 'USB'
-  while (!Serial);     	
-#endif	
-
-  delay(1000);	
   Ethernet.init(driver);
   Ethernet.begin(1000);
 
