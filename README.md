@@ -82,7 +82,7 @@ Just create a new project and give it a name, then go to board selection, enter 
 
  ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_PlatformIO_board_selection.jpg)
 
-Examples that need to be build with an older framework still come with a folder "boards" which keeps the necessary *.json board definition files. 
+Examples that need to be build with an older framework still come with a folder "boards" which keeps the necessary *.json board definition file. 
 
 ### Using the USB-C port:
 
