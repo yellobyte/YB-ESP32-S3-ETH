@@ -1,0 +1,31 @@
+esphome:
+  name: esp32-s3-eth
+  friendly_name: ESP32-S3-ETH
+  min_version: 2026.3.3
+
+esp32:
+  board: yb_esp32s3_eth
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+
+ota:
+  platform: esphome
+
+ethernet:
+  type: W5500
+  clk_pin: GPIO12
+  mosi_pin: GPIO11
+  miso_pin: GPIO13
+  cs_pin: GPIO14
+  reset_pin: GPIO21
+  # 18 would be the correct interrupt_pin
+  # but using this in esphome breaks the connection
+  # and it is not mandatory so leave it out
+  # interrupt_pin: GPIO18
+
+status_led:
+  pin: GPIO47
