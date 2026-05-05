@@ -15,6 +15,16 @@ If WiFi/BT is needed instead of or additionally to an Ethernet connection then t
 
 A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and exploring all hardware features.
 
+
+## Quickstart guide:
+**All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'.** 
+- Step 1) connect the board via Ethernet cable to a switch in your home LAN (make sure a DHCP service is available)
+- Step 2) apply power (via USB or 5V pins)
+
+That's it. The status LED 'IO47' will blink fast when power is applied and will blink slow as soon as an IP address has been assigned.  
+
+In a second step you could build and upload one of the many provided ArduinoIDE/PlatformIO [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples) and build a webserver, sniff your home LAN and much more.
+
 ## YB-ESP32-S3-ETH board features:
  - **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) (when populated with WROOM module)
  - **WiFi/BT IPEX** antenna connector (on ESP32-S3-WROOM-1U module)
@@ -311,6 +321,3 @@ Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/do
 
 <p align="center"><img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth.jpg" height="250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth2.jpg" height="250"/></p> 
 
-
-## Final Remark for first usage: 
-**All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'.** This means the status LED 'IO47' blinks fast whith power applied and blinks slow with obtained IP address (DHCP via Ethernet).
