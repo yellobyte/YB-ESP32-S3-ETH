@@ -95,19 +95,15 @@ Just create a new project and give it a name, then go to board selection, enter 
 Examples that need to be build with an older framework still come with a folder "boards" which keeps the necessary *.json board definition file. 
 
 ### Using the USB-C port:
+With the board connected to your PC/Laptop you'll see 3 additional USB devices. Two COM ports: **Serial USB device** and **USB-Enhanced-Serial CH343** and one device: **USB JTAG/serial debug unit** (or similar, depending on your OS). 
 
-With the board connected to your PC/Laptop you will see 3 additional devices. Two COM ports "Serial USB device" and "USB-Enhanced-Serial CH343" and a device "USB JTAG/serial debug unit" (or similar). 
-
-You can connect a serial monitor program to device "USB-Enhanced-Serial CH343" and watch the serial output generated with Serial.print(). Please note: This connection is **not** affected by any board reset. 
+You can connect a serial monitor program on your PC/Laptop to device "USB-Enhanced-Serial CH343" and watch the serial output generated with e.g. Serial.print(). Important: This serial connection is **not** affected by any board reset. 
 
 Device "USB JTAG/serial debug unit" lets you simultaneously debug the board via the ESP32-S3 integrated JTAG debug circuitry. How to use the latter for debugging is explained in detail [**here**](https://github.com/yellobyte/ESP32-DevBoards-Getting-Started/tree/main/debugging).  
 
-**Remark:**  
-
-The PlatformIO builder scripts (*.json) for modules containing ESP32-S3/C3 already define the build flag _ARDUINO_USB_MODE=1_. This enables the USB-JTAG mode and disables USB-OTG. If not disabled or you want to override it you can (re-)define it in your platformio.ini control file. Normally you don't have to worry about it.
+**Please note:** The PlatformIO builder scripts (*.json) for modules containing ESP32-S3/C3 normally define the build flag _ARDUINO_USB_MODE=1_. This enables the USB-Serial-JTAG controller and disables the USB-OTG-Controller in the ESP32-S3. If you want to override it you can (re-)define it in your platformio.ini control file. Normally you don't have to worry about it.
    
 ### Software Upload to the board:
-
 Uploading new software to boards with your IDE is a breeze. Select the correct COM port and upload the program. The integrated hardware logic will put the board into upload mode automatically.
 
 Below the PlatformIO log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP). Please note: the example has been build with option `CORE_DEBUG_LEVEL=4` on PlatformIO (which is equivalent to `Core Debug Level: "Debug"` on ArduinoIDE) and therefore produces lots of additional output (chip info, memory info, etc.) at startup.
@@ -316,7 +312,6 @@ However, at any time and if needed you can force the ESP32-S3 into upload mode *
 23:19:07.459 > waiting for download
 ```
 ### Integrating this board into your own PCB design projects:
-
 Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc) provides the Eagle library file **_yb-esp32-s3-eth.lbr_** containing the board. Most other PCB design software (e.g. KiCad) are able to import and use Eagle lib files. 
 
 <p align="center"><img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth.jpg" height="250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth2.jpg" height="250"/></p> 
