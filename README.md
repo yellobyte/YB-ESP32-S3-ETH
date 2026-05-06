@@ -3,7 +3,7 @@ The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressi
 - with **ESP32-S3-WROOM-1U-N8R2 module** (8MB Flash/2MB PSRAM),
 - without **ESP32-S3-WROOM-1(U) module** which allows you to solder on any ESP32-S3-WROOM module of your choice.  
 
-The 4-layer board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, CH334 USB-Hub chip, CH343 USB-UART bridge chip, two status LEDs and a **USB-C connector** for software upload, serial output, JTAG debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
+The 4-layer board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, **CH334 USB-Hub** chip, **CH343 USB-UART** bridge chip, two **status LEDs** and a **USB-C connector** for software upload, serial output, JTAG debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
 
 ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_board_top.jpg)
 
@@ -11,10 +11,11 @@ Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**]
 
 The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board. 
 
+The onboard USB-Hub (USB high-speed HUB controller chip CH334) allows for **JTAG debugging and watching serial output simultaneously** without any problems. More info further down.
+
 If WiFi/BT is needed instead of or additionally to an Ethernet connection then the external 2.4GHz WLAN antenna can be connected to the onboard WROOM-1U module. The connector is compatible with the following standards: U.FL (Hirose), MHF-I (I-PEX) and AMC (Amphen). 
 
 A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and exploring all hardware features.
-
 
 ## Quickstart guide:
 **All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'.** 
@@ -23,7 +24,7 @@ A collection of software examples (for PlatformIO and/or ArduinoIDE) are availab
 
 That's it. The status LED 'IO47' will blink fast when power is applied and will blink slow as soon as an IP address has been assigned.  
 
-In a second step you could build and upload one of the many provided ArduinoIDE/PlatformIO [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples) and build a webserver, sniff your home LAN and much more.
+Carrying on you could build and upload one of the many provided ArduinoIDE/PlatformIO [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples) and build a webserver, sniff your home LAN and much more.
 
 ## YB-ESP32-S3-ETH board features:
  - **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) (when populated with WROOM module)
