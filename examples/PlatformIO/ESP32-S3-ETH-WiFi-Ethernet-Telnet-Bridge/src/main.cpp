@@ -1,5 +1,5 @@
 /*
-  Test WiFi-Ethernet-Bridge
+  WiFi-Ethernet-Telnet-Bridge
 
   The sketch starts a server listening for a client on telnet port 23 on both Ethernet and WiFi
   and simply forwards all incoming data to the opposite side. Only one client per side allowed.
