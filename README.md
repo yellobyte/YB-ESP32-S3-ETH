@@ -1,6 +1,7 @@
 ## YB-ESP32-S3-ETH Development Board Overview:
-The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressif's ESP32-S3 MCU. Version 2.0 has been released recently and succeeds the earlier board versions [1.x](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc/retired_board_versions_V1.x). It presently comes in two different variants:  
+The **YB-ESP32-S3-ETH** is a general purpose development board based on Espressif's ESP32-S3 MCU. Version 2.0 has been released recently and succeeds the earlier board versions [1.x](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc/retired_board_versions_V1.x). It presently comes in different variants:  
 - with **ESP32-S3-WROOM-1U-N8R2 module** (8MB Flash/2MB PSRAM),
+- with **ESP32-S3-WROOM-1U-N16R2 module** (16MB Flash/2MB PSRAM) or
 - without **ESP32-S3-WROOM-1(U) module** which allows you to solder on any ESP32-S3-WROOM module of your choice.  
 
 The 4-layer board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge chip **Wiznet W5500**, **CH334 USB-Hub** chip, **CH343 USB-UART** bridge chip, two **status LEDs** and a **USB-C connector** for software upload, serial output, JTAG debugging and feeding power to the board. The boards are currently available on sales platforms [eBay](https://www.ebay.de/sch/i.html?_nkw=yb-esp32-s3) and [Ricardo.ch](https://www.ricardo.ch/en/s/YB-ESP32-S3). 
@@ -68,21 +69,27 @@ As of Arduino ESP32 Core V3.1.1 you open the board list, enter "yb" and then sel
 
 Settings that apply to the standard **-N8R2** board (8MB Flash/2MB PSRAM):  
 - Board: *Yellobyte YB-ESP32-S3-ETH*
-- Flash Size: *8MB*
+- Flash Size: *8MB (64Mb)*
 - Partition Scheme: *8MB with spiffs (...)*
 - PSRAM: *QSPI PSRAM*  
 
  ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH-N8R2_ArduinoIDE-Settings.jpg)  
 
-For **-N8R8** modules (8MB Flash/8MB PSRAM) the following settings apply: 
+For **-N16R2** module (16MB Flash/2MB PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
-- Flash Size: *8MB*
+- Flash Size: *16MB (128Mb)*
+- Partition Scheme: *16MB with spiffs (...)*
+- PSRAM: *QSPI PSRAM*.
+
+For **-N8R8** module (8MB Flash/8MB PSRAM) the following settings apply: 
+- Board: *Yellobyte YB-ESP32-S3-ETH*
+- Flash Size: *8MB (64Mb)*
 - Partition Scheme: *8MB with spiffs (...)*
 - PSRAM: *OPI PSRAM*.
 
-For **-N4** modules (4MB Flash/no PSRAM) the following settings apply: 
+For **-N4** module (4MB Flash/no PSRAM) the following settings apply: 
 - Board: *Yellobyte YB-ESP32-S3-ETH*
-- Flash Size: *4MB*
+- Flash Size: *4MB (32Mb)*
 - Partition Scheme: *Default 4MB*
 - PSRAM: *Disabled*.
 
@@ -93,7 +100,25 @@ Just create a new project and give it a name, then go to board selection, enter 
 
  ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_PlatformIO_board_selection.jpg)
 
-Examples that need to be build with an older framework still come with a folder "boards" which keeps the necessary *.json board definition file. 
+**Important:**  
+1.) If the WROOM module features **8MB** or **16MB** **Flash** memory then you need to add the following lines to the *platformio.ini* project file's **[env]** section to account for the 8MB resp. 16MB flash available. Otherwise you are restricted to only 4MB (as set in the standard *.json board file).  
+
+For module with 8MB Flash (or more):  
+```
+board_build.partitions = default_8MB.csv
+board_upload.flash_size = 8MB
+board_upload.maximum_size = 8388608
+```
+For module with 16MB Flash (or more):  
+```
+board_build.partitions = default_16MB.csv
+board_upload.flash_size = 16MB
+board_upload.maximum_size = 16777216
+```
+2.) If the WROOM module features **>= 8MB** **PSRAM** then it needs below line for the program to run properly:
+```
+board_build.arduino.memory_type = qio_opi
+```
 
 ### Using the USB-C port:
 With the board connected to your PC/Laptop you'll see 3 additional USB devices. Two COM ports: **Serial USB device** and **USB-Enhanced-Serial CH343** and one device: **USB JTAG/serial debug unit** (or similar, depending on your OS). 
