@@ -8,7 +8,7 @@ The 4-layer board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge
 
 ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_board_top.jpg)
 
-Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**](https://www.arduino.cc/reference/en/libraries/ethernet/) or [**EthernetESP32**](https://docs.arduino.cc/libraries/ethernetesp32/)), enabling you to easily realise ESP32 projects around this board with **Ethernet or combined Ethernet/WLAN** support.
+Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**](https://www.arduino.cc/reference/en/libraries/ethernet/) or [**EthernetESP32**](https://docs.arduino.cc/libraries/ethernetesp32/)), enabling you to easily realize ESP32 projects around this board with **Ethernet or combined Ethernet/WLAN** support. Of course you can use the Arduino ESP32 Core integrated **lwIP** library instead. Have a look at example [Webserver_lwIP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-Webserver_lwIP).
 
 The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board. 
 
@@ -28,7 +28,7 @@ That's it. The status LED 'IO47' will blink fast when power is applied and will 
 Carrying on you could build and upload one of the many provided ArduinoIDE/PlatformIO [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples) and build a webserver, sniff your home LAN and much more.
 
 ## YB-ESP32-S3-ETH board features:
- - **ESP32-S3-WROOM-1U-N16R2** module (16MB Flash, 2MB PSRAM) or **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) (when populated with WROOM module)
+ - **ESP32-S3-WROOM-1U-N16R2** module (16MB Flash, 2MB PSRAM) or **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) when populated with WROOM module
  - **WiFi/BT IPEX** antenna connector (on ESP32-S3-WROOM-1U module)
  - **RJ45 10M/100M Ethernet** connector driven by onboard PHY controller chip Wiznet W5500
  - the **W5500** pins required to control the chip are hardwired to the ESP32-S3 GPIOs as follows:
@@ -253,38 +253,8 @@ See https://docs.platformio.org/page/projectconf/build_configurations.html
 00:51:10.972 >   Largest Free Block:   303092 B ( 296.0 KB)
 00:51:10.979 > ------------------------------------------
 00:51:10.986 > SPIRAM Memory Info:
-00:51:10.986 > ------------------------------------------
-00:51:10.989 >   Total Size        :  2097152 B (2048.0 KB)
-00:51:10.989 >   Free Bytes        :  2095104 B (2046.0 KB)
-00:51:10.999 >   Allocated Bytes   :        0 B (   0.0 KB)
-00:51:11.003 >   Minimum Free Bytes:  2095104 B (2046.0 KB)
-00:51:11.009 >   Largest Free Block:  2064372 B (2016.0 KB)
-00:51:11.009 >   Bus Mode          : QSPI
-00:51:11.009 > ------------------------------------------
-00:51:11.009 > Flash Info:
-00:51:11.019 > ------------------------------------------
-00:51:11.019 >   Chip Size         :  8388608 B (8 MB)
-00:51:11.019 >   Block Size        :    65536 B (  64.0 KB)
-00:51:11.029 >   Sector Size       :     4096 B (   4.0 KB)
-00:51:11.029 >   Page Size         :      256 B (   0.2 KB)
-00:51:11.035 >   Bus Speed         : 80 MHz
-00:51:11.039 >   Bus Mode          : QIO
-00:51:11.039 > ------------------------------------------
-00:51:11.049 > Partitions Info:
-00:51:11.049 > ------------------------------------------
-00:51:11.052 >                 nvs : addr: 0x00009000, size:    20.0 KB, type: DATA, subtype: NVS
-00:51:11.072 >             otadata : addr: 0x0000E000, size:     8.0 KB, type: DATA, subtype: OTA
-00:51:11.085 >                app0 : addr: 0x00010000, size:  3264.0 KB, type:  APP, subtype: OTA_0
-00:51:11.106 >                app1 : addr: 0x00340000, size:  3264.0 KB, type:  APP, subtype: OTA_1
-00:51:11.106 >              spiffs : addr: 0x00670000, size:  1536.0 KB, type: DATA, subtype: SPIFFS
-00:51:11.129 >            coredump : addr: 0x007F0000, size:    64.0 KB, type: DATA, subtype: COREDUMP
-00:51:11.129 > ------------------------------------------
-00:51:11.129 > Software Info:
-00:51:11.129 > ------------------------------------------
-00:51:11.129 >   Compile Date/Time : Nov 25 2025 23:05:14
-00:51:11.129 >   ESP-IDF Version   : v5.5-1-gb66b5448e0
-00:51:11.129 >   Arduino Version   : 3.3.0
-00:51:11.129 > ------------------------------------------
+...
+...
 00:51:11.129 > Board Info:
 00:51:11.129 > ------------------------------------------
 00:51:11.129 >   Arduino Board     : YelloByte YB-ESP32-S3-ETH
@@ -413,7 +383,7 @@ If the last answer looks similar to above then MicroPython was successfully talk
 True
 >>> wlan.scan() <Enter>
 ```
-Now it takes a few seconds and then MicroPython should present a list of found WiFi access points.
+It takes a few seconds and then MicroPython should present a list of found WiFi access points.
 
 For more detailed info about MicroPython running on ESP32 please have a look here:  
 https://docs.micropython.org/en/latest/esp32/quickref.html
