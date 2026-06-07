@@ -28,7 +28,7 @@ That's it. The status LED 'IO47' will blink fast when power is applied and will 
 Carrying on you could build and upload one of the many provided ArduinoIDE/PlatformIO [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples) and build a webserver, sniff your home LAN and much more.
 
 ## YB-ESP32-S3-ETH board features:
- - **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) (when populated with WROOM module)
+ - **ESP32-S3-WROOM-1U-N16R2** module (16MB Flash, 2MB PSRAM) or **ESP32-S3-WROOM-1U-N8R2** module (8MB Flash, 2MB PSRAM) (when populated with WROOM module)
  - **WiFi/BT IPEX** antenna connector (on ESP32-S3-WROOM-1U module)
  - **RJ45 10M/100M Ethernet** connector driven by onboard PHY controller chip Wiznet W5500
  - the **W5500** pins required to control the chip are hardwired to the ESP32-S3 GPIOs as follows:
@@ -67,7 +67,7 @@ The board uses the popular WCH chips CH334P (USB-Hub) and CH343P (USB-UART bridg
 ### Arduino IDE:
 As of Arduino ESP32 Core V3.1.1 you open the board list, enter "yb" and then select "**Yellobyte YB-ESP32-S3-ETH**". Now choose the proper settings for COM port, debug level, flash size, PSRAM, etc. as shown below. Be aware, since the ESP32-S3 MCU is very versatile there are a lot of build options to play with. Espressif's homepage offers some help.
 
-Settings that apply to the standard **-N8R2** board (8MB Flash/2MB PSRAM):  
+Settings that apply to a board with **-N8R2** module (8MB Flash/2MB PSRAM):  
 - Board: *Yellobyte YB-ESP32-S3-ETH*
 - Flash Size: *8MB (64Mb)*
 - Partition Scheme: *8MB with spiffs (...)*
