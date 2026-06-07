@@ -337,12 +337,12 @@ However, at any time and if needed you can force the ESP32-S3 into upload mode *
 23:19:07.453 > rst:0x1 (POWERON),boot:0x0 (DOWNLOAD(USB/UART0))
 23:19:07.459 > waiting for download
 ```
-### Integrating this board into your own PCB design projects:
+## Integrating this board into your own PCB design projects:
 Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/doc) provides the Eagle library file **_yb-esp32-s3-eth.lbr_** containing the board. Most other PCB design software (e.g. KiCad) are able to import and use Eagle lib files. 
 
 <p align="center"><img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth.jpg" height="250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth2.jpg" height="250"/></p> 
 
-### Running MicroPython on the board:
+## Running MicroPython on the board:
 
 Of course you can install MicroPython onto the YB-ESP32-S3-ETH board and use it's LAN, WiFi, SPI, I2C, ADC, DAC, GPIO and other features via python scripts.  
  
