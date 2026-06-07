@@ -1,0 +1,19 @@
+--- Terminal on COM4 | 115200 8-N-1
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+16:30:39.419 > ESP-ROM:esp32s3-20210327
+16:30:39.419 > Build:Mar 27 2021
+16:30:39.419 > rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+16:30:39.419 > SPIWP:0xee
+16:30:39.419 > mode:DIO, clock div:1
+16:30:39.419 > load:0x3fce2820,len:0x10cc
+16:30:39.422 > load:0x403c8700,len:0xc2c
+16:30:39.422 > load:0x403cb700,len:0x30c0
+16:30:39.422 > entry 0x403c88b8
+16:30:39.625 > blinkTask has started.
+16:30:40.162 > ETH Started
+16:30:40.162 > mDNS responder started
+16:30:40.162 > HTTP server started
+16:30:42.151 > ETH Connected
+16:30:44.677 > ETH Got IP: 192.168.1.82
