@@ -342,3 +342,78 @@ Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/do
 
 <p align="center"><img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth.jpg" height="250"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/Eagle_project_with_yb-esp32-s3-eth2.jpg" height="250"/></p> 
 
+### Running MicroPython on the board:
+
+Of course you can install MicroPython onto the YB-ESP32-S3-ETH board and use it's LAN, WiFi, SPI, I2C, ADC, DAC, GPIO and other features via python scripts.  
+ 
+**Step 1)** Load MicroPython onto the board. Go to https://micropython.org/download/ESP32_GENERIC_S3/ and download the newest *.bin firmware release. Here you will find detailed installation instructions as well.
+
+**Step 2)** Erase the entire flash on the board with 
+```
+esptool.py erase_flash
+```
+If esptool.py can't determine which port your board is connected to, try
+```
+esptool.py --port PORTNAME erase_flash
+```
+**Step 3)** Flash the previously downloaded firmware to the board, e.g.
+```
+esptool.py --port COM4 --baud 460800 write_flash 0 ESP32_GENERIC_S3-20260406-v1.28.0.bin
+```
+**Step 4)** Reboot the board by shortly pressing the 'R' button. Then connect your serial monitor to the correct port (here COM4) and press ENTER. If flashing was successful you will be greeted with
+```
+01:57:53.819 > Build:Mar 27 2021
+01:57:53.819 > rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+01:57:53.825 > SPIWP:0xee
+01:57:53.825 > mode:DIO, clock div:1
+01:57:53.825 > load:0x3fce2820,len:0xeac
+01:57:53.830 > load:0x403c8700,len:0xc28
+01:57:53.830 > load:0x403cb700,len:0x2ff8
+01:57:53.830 > entry 0x403c88ac
+01:57:54.370 > MicroPython v1.28.0 on 2026-04-06; Generic ESP32S3 module with ESP32S3
+01:57:54.375 > Type "help()" for more information.
+01:57:54.375 > >>> 
+```
+which confirms that MicroPython is now up and running on your board. Just enter *help()* and MicroPython will present some help info.
+
+**Example 1: Switching the onboard status LED (GPIO47) on/off:**
+```
+>>> import machine <Enter>
+>>> from machine import Pin <Enter>
+>>> p0 = Pin(47, Pin.OUT) <Enter>
+>>> p0.on() <Enter>
+>>> p0.off() <Enter>
+```
+
+**Example 2: Checking the LAN connection.**  
+Accessing the LAN with MicroPython means the ESP32-S3 would activate it's integrated Ethernet MAC (EMAC) and use the onboard W5500 chip purely as Ethernet PHY.  
+
+BTW: The ESP32-S3 supports other external SPI Ethernet interface chips as well, e.g. LAN8720, KSZ8851SNL, DM9051.  
+
+Ok. First make sure the **INT solder bridge** on the bottom of your YB-ESP32-S3-ETH board is **closed** (default: open) and a network cable connects your board with your local network. Finally make sure your local network provides a **DHCP service**.
+
+Now only a few lines of python code are needed. 
+```
+>>> import machine, network <Enter>
+>>> from machine import Pin, SPI <Enter>
+>>> spi = SPI(1, sck=Pin(12), mosi=Pin(11), miso=Pin(13)) <Enter>
+>>> lan = network.LAN(spi=spi, phy_type=network.PHY_W5500, phy_addr=0, cs=Pin(14), int=Pin(18)) <Enter>
+>>> lan.active(True) <Enter>
+True
+>>> lan.ifconfig() <Enter>
+('192.168.1.88', '255.255.255.0', '192.168.1.1', '192.168.1.2')
+```
+If the last answer looks similar to above then MicroPython was successfully talking with the W5500 and your board requested and got a valid ip address from the DHCP server. 
+
+**Example 3: Scanning for WiFi-APs**  
+```
+>>> import network <Enter>
+>>> wlan = network.WLAN() <Enter>
+>>> wlan.active(True)
+True
+>>> wlan.scan() <Enter>
+```
+Now it takes a few seconds and then MicroPython should present a list of found WiFi access points.
+
+For more detailed info about MicroPython running on ESP32 please have a look here:  
+https://docs.micropython.org/en/latest/esp32/quickref.html
