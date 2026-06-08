@@ -48,7 +48,7 @@ esp_err_t printPacket(esp_eth_handle_t handle, uint8_t *buffer, uint32_t len, vo
 }
 
 // Event handler for Ethernet
-static void ethEventHandler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
+void ethEventHandler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {
   switch (event_id) {
   case ETHERNET_EVENT_CONNECTED:
