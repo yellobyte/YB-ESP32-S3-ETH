@@ -8,20 +8,20 @@ The 4-layer board provides a **RJ45 Ethernet connector**, an Ethernet PHY bridge
 
 ![](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_board_top.jpg)
 
-Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**](https://www.arduino.cc/reference/en/libraries/ethernet/) or [**EthernetESP32**](https://docs.arduino.cc/libraries/ethernetesp32/)), enabling you to easily realize ESP32 projects around this board with **Ethernet or combined Ethernet/WLAN** support. Of course you can use the Arduino ESP32 Core integrated **lwIP** library instead. Have a look at example [Webserver_lwIP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-Webserver_lwIP).
+If WiFi/BT is needed instead of or additionally to an Ethernet connection then the provided external 2.4GHz WLAN antenna can be connected to the onboard WROOM-1U module. The connector is compatible with the following standards: U.FL (Hirose), MHF-I (I-PEX) and AMC (Amphen).  
 
-The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board. 
+The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board.  
 
-The onboard USB-Hub (USB high-speed HUB controller chip CH334) allows for **JTAG debugging and watching serial output simultaneously** without any problems. More info further down.
+The onboard USB-Hub (USB high-speed HUB controller chip CH334) allows for **JTAG debugging and watching serial output simultaneously** without any problems. More info further down.  
 
-If WiFi/BT is needed instead of or additionally to an Ethernet connection then the external 2.4GHz WLAN antenna can be connected to the onboard WROOM-1U module. The connector is compatible with the following standards: U.FL (Hirose), MHF-I (I-PEX) and AMC (Amphen). 
+Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**](https://www.arduino.cc/reference/en/libraries/ethernet/) or [**EthernetESP32**](https://docs.arduino.cc/libraries/ethernetesp32/)), enabling you to easily realize ESP32 projects around this board with **Ethernet or combined Ethernet/WLAN** support. Of course you can use the Arduino ESP32 Core integrated **lwIP** library instead. Have a look at example [Webserver_lwIP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/Webserver_lwIP).  
 
-Since the board has both Wifi and Ethernet connectivity **it can bridge the two interfaces at Layer 2**, allowing devices connected to a Wifi Soft-AP to communicate with devices on the Ethernet network and vice versa. Please see example [ESP32-S3-ETH-WiFi-Ethernet-Layer2-Bridge](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-WiFi-Ethernet-Layer2-Bridge).
+Since the board has both Wifi and Ethernet connectivity **it can even bridge the two interfaces at Layer 2**, allowing devices connected to a Wifi Soft-AP to communicate with devices on the Ethernet network and vice versa. Please see example [WiFi-Ethernet-Layer2-Bridge](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/WiFi-Ethernet-Layer2-Bridge).
 
 Many more software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and explore all hardware features.
 
 ## Quickstart guide:
-**All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'.** 
+**All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'DHCP'.** 
 - Step 1) connect the board via Ethernet cable to a switch in your home LAN (make sure a DHCP service is available)
 - Step 2) apply power (via USB or 5V pins)
 
@@ -134,7 +134,7 @@ Device "USB JTAG/serial debug unit" lets you simultaneously debug the board via 
 ### Software Upload to the board:
 Uploading new software to boards with your IDE is a breeze. Select the correct COM port and upload the program. The integrated hardware logic will put the board into upload mode automatically.
 
-Below the PlatformIO log of flashing the dev board with provided software example [ESP32-S3-ETH-DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-DHCP). Please note: the example has been build with option `CORE_DEBUG_LEVEL=4` on PlatformIO (which is equivalent to `Core Debug Level: "Debug"` on ArduinoIDE) and therefore produces lots of additional output (chip info, memory info, etc.) at startup.
+Below the PlatformIO log of flashing the dev board with provided software example [DHCP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/DHCP). Please note: the example has been build with option `CORE_DEBUG_LEVEL=4` on PlatformIO (which is equivalent to `Core Debug Level: "Debug"` on ArduinoIDE) and therefore produces lots of additional output (chip info, memory info, etc.) at startup.
 ```
 Executing task: C:\Users\tj\.platformio\penv\Scripts\platformio.exe run --target upload --target monitor --upload-port COM3 --monitor-port COM3 
 
