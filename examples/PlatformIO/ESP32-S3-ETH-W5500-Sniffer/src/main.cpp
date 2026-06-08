@@ -1,5 +1,5 @@
 /*
-  Test-W5500-MACRAW
+  W5500-Sniffer
 
   Sniffing the Ethernet LAN with W5500 in promisucous mode.
 
