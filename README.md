@@ -16,7 +16,9 @@ The onboard USB-Hub (USB high-speed HUB controller chip CH334) allows for **JTAG
 
 If WiFi/BT is needed instead of or additionally to an Ethernet connection then the external 2.4GHz WLAN antenna can be connected to the onboard WROOM-1U module. The connector is compatible with the following standards: U.FL (Hirose), MHF-I (I-PEX) and AMC (Amphen). 
 
-A collection of software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and exploring all hardware features.
+Since the board has both Wifi and Ethernet connectivity **it can bridge the two interfaces at Layer 2**, allowing devices connected to a Wifi Soft-AP to communicate with devices on the Ethernet network and vice versa. Please see example [ESP32-S3-ETH-WiFi-Ethernet-Layer2-Bridge](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/ESP32-S3-ETH-WiFi-Ethernet-Layer2-Bridge).
+
+Many more software examples (for PlatformIO and/or ArduinoIDE) are available in folder [examples](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples). They will help you getting used to the board and explore all hardware features.
 
 ## Quickstart guide:
 **All YB-ESP32-S3-ETH boards delivered have already been flashed with software example 'ESP32-S3-ETH-DHCP'.** 
