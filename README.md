@@ -314,7 +314,7 @@ Its easy. Folder [doc](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/do
 
 ## Running MicroPython on the board:
 
-Of course you can install MicroPython onto the YB-ESP32-S3-ETH board and use it's LAN, WiFi, SPI, I2C, ADC, DAC, GPIO and other features via python scripts.  
+Of course you can install MicroPython onto the YB-ESP32-S3-ETH board and use it's LAN, WiFi, SPI, I2C, ADC, GPIO and other features via python scripts.  
  
 **Step 1)** Load MicroPython onto the board. Go to https://micropython.org/download/ESP32_GENERIC_S3/ and download the newest *.bin firmware release. Here you will find detailed installation instructions as well.
 
