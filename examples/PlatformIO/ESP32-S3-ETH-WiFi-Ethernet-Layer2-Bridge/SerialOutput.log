@@ -1,0 +1,44 @@
+--- Terminal on COM4 | 115200 8-N-1
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+23:02:49.455 > ESP-ROM:esp32s3-20210327
+23:02:49.455 > Build:Mar 27 2021
+23:02:49.455 > rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+23:02:49.455 > SPIWP:0xee
+23:02:49.455 > mode:DIO, clock div:1
+23:02:49.455 > load:0x3fce2820,len:0x10cc
+23:02:49.455 > load:0x403c8700,len:0xc2c
+23:02:49.455 > load:0x403cb700,len:0x30c0
+23:02:49.455 > entry 0x403c88b8
+23:02:49.852 > [    17][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+23:02:49.873 > ESP32-S3 Wifi-Ethernet L2 Bridge running...
+23:02:49.969 > [   134][I][main.cpp:72] ethEventHandler(): Ethernet Started
+23:02:51.967 > [  2135][I][main.cpp:58] ethEventHandler(): Ethernet Link Up
+23:02:51.967 > [  2140][I][main.cpp:61] ethEventHandler(): Ethernet MAC Address: DE:AD:BE:EF:FE:ED
+23:02:52.017 > [  2184][I][main.cpp:128] wifiEventHandler(): WiFi home channel changed
+23:02:52.017 > [  2191][I][main.cpp:122] wifiEventHandler(): WiFi Soft-AP started
+23:03:22.988 > [ 33154][I][main.cpp:106] wifiEventHandler(): WiFi Soft-AP got a station connected
+23:03:49.969 > Stats: RAM Used/Free=110620/250472 Bytes, Eth->Wifi=4337/0, Wifi->Eth=7286/0, AP-Connections=1
+23:04:49.971 > Stats: RAM Used/Free=112216/248856 Bytes, Eth->Wifi=26484/0, Wifi->Eth=50216/0, AP-Connections=1
+23:05:28.349 > [158512][E][main.cpp:143] queueEth2wifi(): queueing eth->wifi failed or timeout
+23:05:49.957 > Stats: RAM Used/Free=139760/221332 Bytes, Eth->Wifi=51533/1, Wifi->Eth=99677/0, AP-Connections=1
+23:06:49.972 > Stats: RAM Used/Free=147164/213908 Bytes, Eth->Wifi=73990/1, Wifi->Eth=143537/0, AP-Connections=1
+23:06:54.402 > [244565][E][main.cpp:170] pktEth2wifiTask(): sending packet to wifi failed, error=12309(0x3015)
+23:07:49.972 > Stats: RAM Used/Free=112140/248932 Bytes, Eth->Wifi=95744/2, Wifi->Eth=184304/0, AP-Connections=1
+23:08:49.973 > Stats: RAM Used/Free=132820/228252 Bytes, Eth->Wifi=120471/2, Wifi->Eth=233178/0, AP-Connections=1
+23:10:49.974 > Stats: RAM Used/Free=132452/228620 Bytes, Eth->Wifi=169527/2, Wifi->Eth=328426/0, AP-Connections=1
+23:11:49.972 > Stats: RAM Used/Free=130580/230492 Bytes, Eth->Wifi=195221/2, Wifi->Eth=378313/0, AP-Connections=1
+23:12:49.971 > Stats: RAM Used/Free=146556/214516 Bytes, Eth->Wifi=220289/2, Wifi->Eth=427241/0, AP-Connections=1
+23:13:49.971 > Stats: RAM Used/Free=110816/250256 Bytes, Eth->Wifi=242923/2, Wifi->Eth=470427/0, AP-Connections=1
+23:14:49.976 > Stats: RAM Used/Free=110816/250256 Bytes, Eth->Wifi=243758/2, Wifi->Eth=471004/0, AP-Connections=1
+23:15:49.975 > Stats: RAM Used/Free=111976/249096 Bytes, Eth->Wifi=246658/2, Wifi->Eth=475340/0, AP-Connections=1
+23:16:49.972 > Stats: RAM Used/Free=110816/250256 Bytes, Eth->Wifi=260808/2, Wifi->Eth=502393/0, AP-Connections=1
+23:17:49.969 > Stats: RAM Used/Free=110816/250256 Bytes, Eth->Wifi=261700/2, Wifi->Eth=503004/0, AP-Connections=1
+23:18:49.979 > Stats: RAM Used/Free=110816/250256 Bytes, Eth->Wifi=262766/2, Wifi->Eth=503757/0, AP-Connections=1
+23:19:49.979 > Stats: RAM Used/Free=110816/250256 Bytes, Eth->Wifi=267434/2, Wifi->Eth=511375/0, AP-Connections=1
+23:20:14.057 > [1044214][I][main.cpp:114] wifiEventHandler(): WiFi Soft-AP got a station disconnected
+23:20:14.065 > [1044222][I][main.cpp:128] wifiEventHandler(): WiFi home channel changed
+23:20:14.076 > [1044229][I][main.cpp:128] wifiEventHandler(): WiFi home channel changed
+23:20:49.976 > Stats: RAM Used/Free=109904/251168 Bytes, Eth->Wifi=267715/2, Wifi->Eth=511554/0, AP-Connections=0
+23:21:49.973 > Stats: RAM Used/Free=109904/251168 Bytes, Eth->Wifi=267715/2, Wifi->Eth=511554/0, AP-Connections=0
