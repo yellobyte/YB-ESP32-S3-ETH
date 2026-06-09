@@ -227,7 +227,6 @@ void initializeEthernet(void)
   eth_mac_config_t mac_config = ETH_MAC_DEFAULT_CONFIG();
   //mac_config.rx_task_stack_size = 8192;                 // doubles the stack size
   eth_phy_config_t phy_config = ETH_PHY_DEFAULT_CONFIG();
-  //phy_config.phy_addr = CONFIG_ETH_PHY_ADDR;            // PHY address according to board design
   phy_config.reset_gpio_num = W5500_RST;
 
   eth_mac = esp_eth_mac_new_w5500(&w5500_config, &mac_config);
