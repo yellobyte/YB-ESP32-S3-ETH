@@ -9,7 +9,7 @@
 
   Make sure solder bridges "INT" and "RST" on the bottom of the board are closed.
 
-  Last updated 2026-06-08, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-06-09, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -50,9 +50,14 @@ esp_err_t printPacket(esp_eth_handle_t handle, uint8_t *buffer, uint32_t len, vo
 // Event handler for Ethernet
 void ethEventHandler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {
+  uint8_t mac[6];
+	
   switch (event_id) {
   case ETHERNET_EVENT_CONNECTED:
     log_i("Ethernet Link Up");
+    esp_eth_ioctl(hEth, ETH_CMD_G_MAC_ADDR, mac);
+    log_i("Ethernet MAC Address: %02X:%02X:%02X:%02X:%02X:%02X",
+          mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);		
     break;
   case ETHERNET_EVENT_DISCONNECTED:
     log_i("Ethernet Link Down");
@@ -87,7 +92,7 @@ void initializeEthernet(void)
     // .command_bits = 16, // Actually it's the address phase in W5500 SPI frame
     // .address_bits = 8,  // Actually it's the control phase in W5500 SPI frame
     .mode = 0,
-    .clock_speed_hz = 20 * 1000 * 1000,
+    .clock_speed_hz = 40 * 1000 * 1000,
     .spics_io_num = W5500_SS,
     .queue_size = 20
   };
@@ -99,6 +104,7 @@ void initializeEthernet(void)
   esp_eth_mac_t *eth_mac = NULL;
   esp_eth_phy_t *eth_phy = NULL;
   eth_mac_config_t mac_config = ETH_MAC_DEFAULT_CONFIG();
+  //mac_config.rx_task_stack_size = 8192;                 // doubles the stack size
   eth_phy_config_t phy_config = ETH_PHY_DEFAULT_CONFIG();
   //phy_config.phy_addr = CONFIG_ETH_PHY_ADDR;            // PHY address according to board design
   phy_config.reset_gpio_num = W5500_RST;
@@ -111,8 +117,8 @@ void initializeEthernet(void)
   esp_eth_config_t eth_config = ETH_DEFAULT_CONFIG(eth_mac, eth_phy);
   ESP_ERROR_CHECK(esp_eth_driver_install(&eth_config, &hEth));
 
-  // uint8_t mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-  // ESP_ERROR_CHECK(esp_eth_ioctl(eth_handle, ETH_CMD_S_MAC_ADDR, mac));
+  uint8_t mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+  ESP_ERROR_CHECK(esp_eth_ioctl(eth_handle, ETH_CMD_S_MAC_ADDR, mac));
 
   ESP_ERROR_CHECK(esp_eth_update_input_path(hEth, printPacket, NULL));
 
