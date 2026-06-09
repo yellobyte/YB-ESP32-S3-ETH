@@ -1,9 +1,9 @@
 /*
-  W5500-Sniffer
+  W5500-Sniffer2
 
   Sniffing the LAN with W5500 Ethernet controller in promiscuous mode on the YB-ESP32-S3-ETH board.
 
-  We use the lwIP library's Ethernet driver for W5500, which is included in the ESP-IDF framework.
+  We use Espressif's Ethernet driver for W5500, which is included in the ESP-IDF framework.
   The driver is configured to receive all Ethernet frames (promiscuous mode) and print their basic
   information (length, source/destination MAC addresses, EtherType) to the serial console.
 
