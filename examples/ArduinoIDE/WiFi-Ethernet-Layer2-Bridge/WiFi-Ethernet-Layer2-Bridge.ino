@@ -7,7 +7,7 @@
 
   Make sure solder bridges "INT" and "RST" on the bottom of the board are closed.
 
-  Last updated 2026-06-08, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-06-09, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
@@ -18,8 +18,9 @@
 #include <esp_wifi.h>
 #include <esp_private/wifi.h>
 
-#define CONFIG_WIFI_AP_SSID "YB-ESP32-S3-ETH_Soft-AP"
+#define CONFIG_WIFI_AP_SSID     "YB-ESP32-S3-ETH_Soft-AP"
 #define CONFIG_WIFI_AP_PASSWORD "12345678"
+
 #ifdef CONFIG_WIFI_AP_CHANNEL
 #undef CONFIG_WIFI_AP_CHANNEL
 #endif
@@ -224,6 +225,7 @@ void initializeEthernet(void)
   esp_eth_mac_t *eth_mac = NULL;
   esp_eth_phy_t *eth_phy = NULL;
   eth_mac_config_t mac_config = ETH_MAC_DEFAULT_CONFIG();
+  //mac_config.rx_task_stack_size = 8192;                 // doubles the stack size
   eth_phy_config_t phy_config = ETH_PHY_DEFAULT_CONFIG();
   //phy_config.phy_addr = CONFIG_ETH_PHY_ADDR;            // PHY address according to board design
   phy_config.reset_gpio_num = W5500_RST;
