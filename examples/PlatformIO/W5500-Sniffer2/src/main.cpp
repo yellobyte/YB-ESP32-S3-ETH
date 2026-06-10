@@ -117,7 +117,7 @@ void initializeEthernet(void)
   ESP_ERROR_CHECK(esp_eth_driver_install(&eth_config, &hEth));
 
   uint8_t mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-  ESP_ERROR_CHECK(esp_eth_ioctl(eth_handle, ETH_CMD_S_MAC_ADDR, mac));
+  ESP_ERROR_CHECK(esp_eth_ioctl(hEth, ETH_CMD_S_MAC_ADDR, mac));
 
   ESP_ERROR_CHECK(esp_eth_update_input_path(hEth, printPacket, NULL));
 
