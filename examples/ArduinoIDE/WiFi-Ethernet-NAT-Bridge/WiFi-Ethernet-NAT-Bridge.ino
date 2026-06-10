@@ -60,9 +60,11 @@ void eventHandler(arduino_event_id_t event, arduino_event_info_t info) {
       break;
     case ARDUINO_EVENT_WIFI_AP_STACONNECTED:
       Serial.println("AP STA Connected");
+      digitalWrite(LED_BUILTIN, HIGH);
       break;
     case ARDUINO_EVENT_WIFI_AP_STADISCONNECTED:
       Serial.println("AP STA Disconnected");
+      digitalWrite(LED_BUILTIN, LOW);
       break;
     case ARDUINO_EVENT_WIFI_AP_STAIPASSIGNED:
       Serial.print("AP STA IP Assigned: ");
@@ -73,6 +75,7 @@ void eventHandler(arduino_event_id_t event, arduino_event_info_t info) {
       break;
     case ARDUINO_EVENT_WIFI_AP_STOP:
       Serial.println("AP Stopped");
+      digitalWrite(LED_BUILTIN, LOW);
       break;
     case ARDUINO_EVENT_WIFI_READY:
       Serial.println("WiFi Ready");
@@ -84,9 +87,14 @@ void eventHandler(arduino_event_id_t event, arduino_event_info_t info) {
 }
 
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);  // status LED off
+
   Serial.begin(115200);
-  Serial.setDebugOutput(true);    // ESP-IDF log messages will be sent to this Serial port
-  Network.onEvent(eventHandler);  // install event handler for network events
+  Serial.setDebugOutput(true);     // ESP-IDF log messages will be sent to this Serial port
+
+  btStop();                        // Bluetooth not needed  
+  Network.onEvent(eventHandler);   // install event handler for network events
 
   WiFi.AP.begin();
   WiFi.AP.config(apIp, apIp, apMask, apLeaseStart, apDns);
@@ -98,11 +106,10 @@ void setup() {
   delay(100);
 
   SPI.begin(SCK, MISO, MOSI);
-  SPI.setFrequency(40000000);  // 40MHz
+  SPI.setFrequency(40000000);      // 40MHz
   ETH.begin(ETH_TYPE, ETH_ADDR, W5500_SS, W5500_INT, W5500_RST, SPI);
 }
 
 void loop() {
   delay(20000);
 }
-
