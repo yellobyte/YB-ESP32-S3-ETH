@@ -79,7 +79,6 @@ void initializeEthernet(void)
   ESP_ERROR_CHECK(gpio_install_isr_service(0));
   ESP_ERROR_CHECK(esp_event_loop_create_default());
 
-  esp_eth_handle_t hEth = NULL;
   spi_bus_config_t busCfg = {
     .mosi_io_num = MOSI,
     .miso_io_num = MISO,
