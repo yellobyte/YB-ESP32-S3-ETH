@@ -1,0 +1,31 @@
+--- Terminal on COM4 | 115200 8-N-1
+--- Available filters and text transformations: debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+00:07:27.154 > ESP-ROM:esp32s3-20210327
+00:07:27.163 > Build:Mar 27 2021
+00:07:27.163 > rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+00:07:27.168 > SPIWP:0xee
+00:07:27.168 > mode:DIO, clock div:1
+00:07:27.168 > load:0x3fce2820,len:0x10cc
+00:07:27.174 > load:0x403c8700,len:0xc2c
+00:07:27.174 > load:0x403cb700,len:0x30c0
+00:07:27.174 > entry 0x403c88b8
+00:07:27.597 > [    18][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.
+00:07:27.622 > WiFi Ready
+00:07:27.663 > AP Started 
+00:07:27.663 > *ap: <UP,YB-ESP32-S3-ETH_Soft-AP,CH:1,WPA2_PSK,STA:0> (DHCPS,AUTOUP) PRIO: 10
+00:07:27.669 >       ether 7E:DF:A1:F5:B2:78
+00:07:27.669 >       inet 192.168.4.1 netmask 255.255.255.0 broadcast 192.168.2.255
+00:07:27.678 >       gateway 192.168.2.1 dns 9.9.9.9
+00:07:27.678 > 
+00:07:27.792 > ETH Started
+00:07:29.794 > ETH Connected
+00:07:32.314 > ETH Got IP 
+00:07:32.314 > *eth0: <UP,100M,FULL_DUPLEX,AUTO,ADDR:0x1> (DHCPC,GARP,IP_MOD) PRIO: 50
+00:07:32.319 >       ether 7A:DF:A1:F5:B2:79
+00:07:32.319 >       inet 192.168.1.82 netmask 255.255.255.0 broadcast 192.168.1.255
+00:07:32.325 >       gateway 192.168.1.1 dns 192.168.1.2
+00:07:32.329 > 
+00:07:56.313 > AP STA Connected
+00:07:56.320 > AP STA IP Assigned: 192.168.2.2

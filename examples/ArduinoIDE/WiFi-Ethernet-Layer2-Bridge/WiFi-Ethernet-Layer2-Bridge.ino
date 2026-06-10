@@ -3,7 +3,8 @@
 
   The YB-ESP32-S3-ETH board has both Wifi and Ethernet connectivity. This example demonstrates
   how to bridge the two interfaces at Layer 2, allowing devices connected to the Wifi Soft-AP to
-  communicate with devices on the Ethernet network and vice versa.
+  communicate with devices on the Ethernet network and the internet if the board is connected
+  to an internet router via Ethernet.
 
   Make sure solder bridges "INT" and "RST" on the bottom of the board are closed.
 
@@ -26,7 +27,7 @@
 #endif
 #define CONFIG_WIFI_AP_CHANNEL        3   // choose a less crowded channel in your environment
                                           // to improve performance
-#define CONFIG_WIFI_AP_MAX_STA_CONN   2
+#define CONFIG_WIFI_AP_MAX_STA_CONN   2   // two simultaneous WiFi connections are supported
 #define CONFIG_WIFI_AP_IS_SSID_HIDDEN 0   // set to 1 to hide the Soft-AP SSID, but then you need to
                                           // manually connect to the AP by specifying the SSID on the client side
 
@@ -184,7 +185,7 @@ void pktEth2wifiTask(void *args)
 
 esp_err_t initializeFlowControl(void)
 {
-  // Create the queue for flow control between Ethernet and Wifi and the task 
+  // Create the queue for flow control between Ethernet and Wifi and the task
   // to forward packets from queue to Wifi.
   hFlowControlQueue = xQueueCreate(FLOW_CONTROL_QUEUE_LENGTH, sizeof(flow_control_msg_t));
   if (!hFlowControlQueue) {
