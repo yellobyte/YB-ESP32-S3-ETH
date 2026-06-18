@@ -6,9 +6,10 @@
   communicate with devices on the Ethernet network and the internet if the board is connected
   to an internet router via Ethernet.
 
+  IMPORTANT:
   Make sure solder bridges "INT" and "RST" on the bottom of the board are closed.
 
-  Last updated 2026-06-09, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-06-18, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>

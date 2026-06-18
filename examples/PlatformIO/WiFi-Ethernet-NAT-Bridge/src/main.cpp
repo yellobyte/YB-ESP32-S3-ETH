@@ -7,9 +7,11 @@
   network and the Internet if the board is connected to an internet router via Ethernet.
 
   Only a single Wifi connection is supported.
+	
+  IMPORTANT:
   Make sure solder bridges "INT" and "RST" on the bottom of the board are closed.
 
-  Last updated 2026-06-10, ThJ <yellobyte@bluewin.ch>
+  Last updated 2026-06-18, ThJ <yellobyte@bluewin.ch>
 */
 
 #include <Arduino.h>
