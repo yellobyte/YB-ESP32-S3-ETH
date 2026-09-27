@@ -12,7 +12,7 @@ If WiFi/BT is needed instead of or additionally to an Ethernet connection then t
 
 The densly populated YB-ESP32-S3-ETH board provides multiple GPIO pins (as shown below) and is still [**highly breadboard compatible**](https://github.com/yellobyte/YB-ESP32-S3-ETH/raw/main/doc/YB-ESP32-S3-ETH_on_breadboard.jpg) for it leaves one row of accessible breadboard contacts on either side of the board. All I/O ports (GPIOx) are labeled on both sides of the board.  
 
-The onboard USB-Hub (USB high-speed HUB controller chip CH334) allows for **JTAG debugging and watching serial output simultaneously** without any problems. More info further down.  
+The onboard USB-Hub (USB high-speed HUB controller chip CH334) allows for simultaneous **JTAG debugging** and **serial output**. More info further down. More info further down.  
 
 Arduino libraries for the Wiznet W5500 are widely available (e.g. [**Ethernet**](https://www.arduino.cc/reference/en/libraries/ethernet/) or [**EthernetESP32**](https://docs.arduino.cc/libraries/ethernetesp32/)), enabling you to easily realize ESP32 projects around this board with **Ethernet or combined Ethernet/WLAN** support. Of course you can use the Arduino ESP32 Core integrated **lwIP** library instead. Have a look at example [Webserver_lwIP](https://github.com/yellobyte/YB-ESP32-S3-ETH/tree/main/examples/ArduinoIDE/Webserver_lwIP).  
 
